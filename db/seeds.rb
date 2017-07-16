@@ -24,16 +24,25 @@
   team_data.each do |team|
     Team.create(team)
   end
+# User Team
+  User.all.each do |user|
+    if id < 2
+      teams
+  end
 # Chore
-  #chore_data = [
-  #  {:name => "Clean Bathroom", :value => 10},
-  #  {:name => "Clean Bedroom", :value => 5},
-  #  {:name => "Take Out Trash", :value => 3},
-  #  {:name => "Walk Dog", :value => 1 },
-  #  {:name => "Cook Dinner", :value => 1 },
-  #  {:name => "Wash Laundry", :value => 3 }
-  #  ]
-# Team
+  chore_data = [
+    {:name => "Clean Bathroom", :value => 10},
+    {:name => "Clean Bedroom", :value => 5},
+    {:name => "Take Out Trash", :value => 3},
+    {:name => "Walk Dog", :value => 1 },
+    {:name => "Cook Dinner", :value => 1 },
+    {:name => "Wash Laundry", :value => 3 }
+    ]
+
+    Team.all.each do |team|
+      chore_data.each do |chore|
+        team.chores.create(chore)
+      end
+    end
 # Task
 # Frindship
-# User Team
