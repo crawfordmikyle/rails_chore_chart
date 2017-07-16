@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'cancancan', '~> 2.0'
 gem 'omniauth'
+# Boot Strap SASS
+gem 'bootstrap-sass'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
