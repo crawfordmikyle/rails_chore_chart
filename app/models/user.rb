@@ -5,6 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
 
+  has_many :UserTeams
+  has_many :Teams, through: :UserTeams
+  has_many :Friendships
+  has_many :Friends, through: :Friendships
+  has_many :Tasks
+  has_many :Chores, through: :Tasks
+
+
   ROLES = %i[admin author]
 
   def roles=(roles)
@@ -23,5 +31,5 @@ class User < ApplicationRecord
   end
 
 
-  
+
 end

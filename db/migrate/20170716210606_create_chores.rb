@@ -4,7 +4,7 @@ class CreateChores < ActiveRecord::Migration[5.1]
       t.string :name
       t.integer :value
       t.datetime :due_date
-      t.boolean :compleated
+      t.boolean :completed
       t.timestamps
     end
   end

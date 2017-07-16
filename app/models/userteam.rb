@@ -1,2 +1,2 @@
-class Userteam < ApplicationRecord
+class UserTeam < ApplicationRecord
 end
