@@ -5,12 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
 
-  has_many :UserTeams
-  has_many :Teams, through: :UserTeams
-  has_many :Friendships
-  has_many :Friends, through: :Friendships
-  has_many :Tasks
-  has_many :Chores, through: :Tasks
+  has_many :userteams
+  has_many :teams, through: :userteams
+  has_many :friendships
+  has_many :friends, through: :friendships
+  has_many :tasks
+  has_many :chores, through: :tasks
 
 
   ROLES = %i[admin author]
