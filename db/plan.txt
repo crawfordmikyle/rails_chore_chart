@@ -12,6 +12,8 @@ tables
       has_many Teams through UserTeam
       has_many Friendships
       has_many Friends through Friendships
+      has_many Tasks
+      has_many Chores through Tasks
 
   Team
     attributes
@@ -35,9 +37,20 @@ tables
   Chore
     attributes
       name
-
+      value
+      due_date
+      status
     associations
       belongs_to Team
+
+  Tasks
+    attributes
+      user_id
+      chore_id
+
+    associations
+      belongs_to User
+      belongs_to Chore
 
   Friendships
     attributes
@@ -46,8 +59,3 @@ tables
     associations
       belongs_to User
       belongs_to Friend class User
-
-
-  TeamChore
-  UserChore
-  UserTeam
