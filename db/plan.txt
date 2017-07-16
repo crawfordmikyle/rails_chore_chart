@@ -2,16 +2,52 @@ Schema Layout
 
 tables
   User
-    
+    attributes
+      email
+      password_digest
+      name
 
-    has_one Team
-    has_many Friends
-    has_many Chores
+    associations
+      has_many UserTeams
+      has_many Teams through UserTeam
+      has_many Friendships
+      has_many Friends through Friendships
 
   Team
+    attributes
+      name
+
+    associations
+      has_many UserTeams
+      has_many Users through UserTeam
+      has_many Chores
+
+
+  UserTeam
+    attributes
+      user_id
+      team_id
+    associations
+      belongs_to User
+      belongs_to Team
+
 
   Chore
-  Friend
+    attributes
+      name
+
+    associations
+      belongs_to Team
+
+  Friendships
+    attributes
+      user_id
+      friend_id
+    associations
+      belongs_to User
+      belongs_to Friend class User
+
+
   TeamChore
   UserChore
   UserTeam
