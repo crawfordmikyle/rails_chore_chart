@@ -1,0 +1,17 @@
+Schema Layout
+
+tables
+  User
+    
+
+    has_one Team
+    has_many Friends
+    has_many Chores
+
+  Team
+
+  Chore
+  Friend
+  TeamChore
+  UserChore
+  UserTeam

@@ -10,13 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-# Schema Layout
-# => tables
-#    => User =>
-#    => Chore
-#    => Team => has_many => Users, Chores
-#
-
 ActiveRecord::Schema.define(version: 20170716201938) do
 
   create_table "users", force: :cascade do |t|
