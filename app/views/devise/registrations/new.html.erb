@@ -3,6 +3,13 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+<% for role in User::ROLES %>
+  <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
+  <%= label_tag "user_roles_#{role}", role.to_s.humanize %><br />
+<% end %>
+
+<%= hidden_field_tag "user[roles][]", "" %>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
