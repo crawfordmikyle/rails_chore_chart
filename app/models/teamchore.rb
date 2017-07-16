@@ -1,0 +1,2 @@
+class TeamChore < ApplicationRecord
+end
