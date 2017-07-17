@@ -1,6 +1,12 @@
 <%= form_for :teams do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, "Team Name" %>
+    <%= f.text_field :name %>
+  </div>
 
-  <%= f.submit, class: 'btn' %>
+  <br>
+
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
 <% end %>

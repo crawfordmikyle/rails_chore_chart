@@ -29,6 +29,7 @@ tables
     attributes
       user_id
       team_id
+      accepted?
     associations
       belongs_to User
       belongs_to Team
@@ -56,6 +57,7 @@ tables
     attributes
       user_id
       friend_id
+      accepted?
     associations
       belongs_to User
       belongs_to Friend class User
