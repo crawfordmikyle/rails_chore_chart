@@ -6,6 +6,17 @@ class ChoresController < ApplicationController
   end
 
   def create
-    binding.pry
+    if @chore = current_user.current_team.chores.create(chore_params)
+      redirect_to chore_path(@chore)
+    else
+      redirect_to new_chore_path
+    end
   end
+
+private
+
+  def chore_params
+    params.require(:chore).permit(:name, :value)
+  end
+
 end
