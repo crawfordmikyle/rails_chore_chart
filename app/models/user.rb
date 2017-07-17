@@ -30,6 +30,13 @@ class User < ApplicationRecord
     roles.include?(role)
   end
 
+  def confirmed_friends=
+    @confirmed_friends = nil
+  end
+
+  def confirmed_friends
+    @confirmed_friends
+  end
 
 
 end
