@@ -13,6 +13,10 @@ class ChoresController < ApplicationController
     end
   end
 
+  def show
+    @chore = Chore.find_by_id(params[:id])
+  end
+
 private
 
   def chore_params

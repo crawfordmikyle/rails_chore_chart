@@ -13,6 +13,11 @@ class TeamsController < ApplicationController
         @team.user_teams.create({:user_id => user_id})
       end
     end
+      redirect_to teams_path(@team)
+  end
+
+  def show
+    @team = Team.find_by_id(params[:id])
   end
 
 private
