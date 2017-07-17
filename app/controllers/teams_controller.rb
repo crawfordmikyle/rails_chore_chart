@@ -7,15 +7,18 @@ class TeamsController < ApplicationController
   end
 
   def create
-    binding.pry
+    @team = Team.create({:name => team_params[:name]})
+    if team_params[:user_teams_attributes]
+      team_params[:user_teams_attributes][:user_id].each do |user_id|
+        @team.user_teams.create({:user_id => user_id})
+      end
+    end
   end
 
-  private
-
+private
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, :user_teams_attributes => {:user_id => []})
   end
-  
 end
 
 #<!-- {"utf8"=>"✓", "authenticity_token"=>"tPDMtdb4c5o/zbyMJga9pz3yHAaSvNCZXSFUe44HvWtwyiCKS9baX87MC/f3lGKUfCClH5U3FrcBtZwje7Vj6Q==",

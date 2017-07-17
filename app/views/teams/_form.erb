@@ -6,11 +6,11 @@
 
   <br>
   <h3>Invite Users</h3>
-  <%= fields_for :user_teams_attributes, @team.user_teams do |ff|  %>
+  <%= fields_for :user_teams, @team.user_teams do |ff|  %>
     <div class="control-group">
       <% @users.each do |user| %>
         <%= f.label user.name %>
-        <%= check_box_tag "user_teams[]", user.id %></td>
+        <%= check_box_tag "team[user_teams_attributes][user_id][]", user.id %></td>
         <br>
       <% end %>
     </div>
