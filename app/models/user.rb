@@ -38,5 +38,9 @@ class User < ApplicationRecord
     @confirmed_friends
   end
 
+  def current_team
+    teams.first
+  end
+
 
 end
