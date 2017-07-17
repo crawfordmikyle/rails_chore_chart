@@ -1,8 +1,20 @@
-<%= form_for :teams do |f| %>
+<%= form_for @team do |f| %>
   <div class="control-group">
     <%= f.label :name, "Team Name" %>
     <%= f.text_field :name %>
   </div>
+
+  <br>
+  <h3>Invite Users</h3>
+  <%= fields_for :user_teams_attributes, @team.user_teams do |ff|  %>
+    <div class="control-group">
+      <% @users.each do |user| %>
+        <%= f.label user.name %>
+        <%= check_box_tag "user_teams[]", user.id %></td>
+        <br>
+      <% end %>
+    </div>
+  <% end %>
 
   <br>
 
