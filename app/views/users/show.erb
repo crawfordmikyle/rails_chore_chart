@@ -1,2 +1,20 @@
-<h1><%= @user.name %></h1>
-<%= link_to %>
+<div class="container">
+  <div class="row">
+    <h1><%= @user.name %></h1>
+  </div>
+  <div class="row">
+    <div class="col-md-4 well">
+      <h3>Team</h3>
+    </div>
+    <div class="col-md-4 well">
+      <h3>Tasks</h3>
+      <% @user.tasks.each do |task| %>
+        <%= task.chore.name %>
+        <br>
+      <% end %>
+    </div>
+    <div class="col-md-4 well">
+      <h3>Tasks Past Due</h3>
+    </div>
+  </div>
+</div>
