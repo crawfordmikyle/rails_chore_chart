@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
 
-  has_many :user_teams
-  has_many :teams, through: :user_teams
+  has_one :user_team
+  has_one :team, through: :user_team
   has_many :friendships
   has_many :friends, through: :friendships
   has_many :tasks

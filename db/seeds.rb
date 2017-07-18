@@ -27,13 +27,13 @@
 # User Team
   User.all.each do |user|
     if user.id <= 2
-      user.user_teams.create({:team_id => 1})
+      user.team = Team.find_by_id(1)
     elsif user.id > 2 && user.id <= 4
-      user.user_teams.create({:team_id => 2})
+      user.team = Team.find_by_id(2)
     elsif user.id > 4 && user.id <= 6
-      user.user_teams.create({:team_id => 3})
+      user.team = Team.find_by_id(3)
     else
-      user.user_teams.create({:team_id => 4})
+      user.team = Team.find_by_id(4)
     end
   end
 # Chore
