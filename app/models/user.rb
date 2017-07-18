@@ -30,11 +30,11 @@ class User < ApplicationRecord
     roles.include?(role)
   end
 
-  def confirmed_friends=
-    @confirmed_friends = nil
-  end
-
   def confirmed_friends
+    @confirmed_friends = []
+    friendships.all.where(:accepted => true ).each do |friendship|
+      @confirmed_friends << friendship.friend
+    end
     @confirmed_friends
   end
 
