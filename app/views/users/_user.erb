@@ -1,0 +1,8 @@
+<!-- Short user info for friends and team member box-->
+<div class="well">
+  <%= user.name %>
+  <br>
+  <%= user.current_team.name %>
+
+  <%= button_to "Friend Request", { controller: "friendships", action: "create", id: user.id }, method: :post %>
+</div>

@@ -6,9 +6,9 @@
     <div class="col-md-4">
       <h3>Team Members</h3>
       <% @team.users.each do |user| %>
-        <%= user.name %>
-        <br>
+        <%= render partial: "users/user", locals: {user: user} %>
       <% end %>
+
     </div>
     <div class="col-md-4">
       <h3>Chores</h3>
