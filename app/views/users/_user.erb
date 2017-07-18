@@ -4,5 +4,7 @@
   <br>
   <%= user.current_team.name %>
 
-  <%= button_to "Friend Request", { controller: "friendships", action: "create", id: user.id }, method: :post %>
+  <% if !current_user.friends_with(user) %>
+    <%= button_to "Friend Request", { controller: "friendships", action: "create", id: user.id }, method: :post %>
+  <% end %>
 </div>

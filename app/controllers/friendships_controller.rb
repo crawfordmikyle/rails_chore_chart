@@ -3,9 +3,12 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:id])
+    @friendship.save
+
+    redirect_to 
   end
 
   def destroy
-    
+
   end
 end

@@ -45,4 +45,11 @@ class User < ApplicationRecord
   def accepted_chore(chore)
     Task.all.find_by(:user_id => id, :chore_id => chore.id)
   end
+
+  def friends_with(friend_id)
+    if friendships.find_by({:user_id => id, :friend_id => friend_id})
+      true
+    end
+  end
+
 end
