@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :teams, :only => [:index, :new, :edit, :show, :create, :destroy]
   resources :friendships, :only => [:new, :edit, :show, :create, :destroy]
   resources :chores, :only => [:new, :edit, :show, :create, :destroy]
-  resources :tasks, :only => [:new, :edit, :show, :create, :destroy]
+  resources :tasks, :only => [:new, :edit, :show, :create, :update, :destroy]
 end
