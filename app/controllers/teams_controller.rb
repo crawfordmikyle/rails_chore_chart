@@ -11,12 +11,8 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.create({:name => team_params[:name]})
-    if team_params[:user_teams_attributes]
-      team_params[:user_teams_attributes][:user_id].each do |user_id|
-        @team.user_teams.create({:user_id => user_id})
-      end
-    end
+      binding.pry
+      @user = User.find_by(:user_id => current_user.id)
       redirect_to teams_path(@team)
   end
 
