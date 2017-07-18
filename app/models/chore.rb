@@ -7,4 +7,10 @@ class Chore < ApplicationRecord
     completed = true
     save
   end
+
+  def accepted
+    if Task.all.find_by_id(id)
+      true
+    end
+  end
 end

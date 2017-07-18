@@ -1,1 +1,8 @@
 <h1><%= @chore.name %></h1>
+<h3>Status</h3>
+<% if @chore.accepted %>
+  ACCEPTED
+<% end %>
+<% if @chore.completed %>
+  COMPLETED
+<% end %>
