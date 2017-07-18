@@ -9,8 +9,9 @@ class Chore < ApplicationRecord
   end
 
   def accepted
-    if Task.all.find_by_id(id)
+    if Task.all.find_by(:chore_id => id)
       true
     end
   end
+  
 end
