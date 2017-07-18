@@ -42,5 +42,7 @@ class User < ApplicationRecord
     teams.first
   end
 
-
+  def accepted_chore(chore)
+    Task.all.find_by(:user_id => id, :chore_id => chore.id)
+  end
 end

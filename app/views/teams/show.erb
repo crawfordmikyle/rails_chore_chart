@@ -15,13 +15,23 @@
       <% @team.chores.each do |chore| %>
         <div class="">
           <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
-          <%= button_to "Accept Chore", { controller: "tasks", action: "create", id: chore.id }, method: :post %>
+
+          <% if !chore.accepted && !chore.completed %>
+            <%= button_to "Accept Chore", { controller: "tasks", action: "create", id: chore.id }, method: :post %>
+          <% end %>
+
+          <% if current_user.accepted_chore(chore) %>
+            <%= button_to "Done", {:controller => "tasks", :action => "update", :id => chore.task_id}, method: :patch %>
+          <% end %>
+
           <% if chore.completed %>
             COMPLETED
           <% end %>
+
           <% if chore.accepted %>
             ACCEPTED
           <% end %>
+
         </div>
         <br>
       <% end %>

@@ -4,8 +4,8 @@ class Chore < ApplicationRecord
   validates :name, presence: true
 
   def mark_completed
-    completed = true
-    save
+    self.completed = true
+    self.save
   end
 
   def accepted
@@ -13,4 +13,9 @@ class Chore < ApplicationRecord
       true
     end
   end
+
+  def task_id
+    Task.all.find_by(:chore_id => id).id
+  end
+
 end
