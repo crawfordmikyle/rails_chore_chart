@@ -15,7 +15,7 @@
       <% @team.chores.each do |chore| %>
         <div class="">
           <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
-          <%= button_to "Accept Chore", { controller: "tasks", action: "create", id: chore.id }, method: :post, data: { confirm: "Are you sure?" } %>
+          <%= button_to "Accept Chore", { controller: "tasks", action: "create", id: chore.id }, method: :post %>
           <% if chore.completed %>
             COMPLETED
           <% end %>
