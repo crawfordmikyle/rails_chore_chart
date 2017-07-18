@@ -12,6 +12,9 @@
         <div class="">
           <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
           <%= button_to "Accept Chore", { controller: "tasks", action: "create", id: chore.id }, method: :post, data: { confirm: "Are you sure?" } %>
+          <% if chore.completed %>
+            COMPLETED
+          <% end %>
         </div>
         <br>
       <% end %>

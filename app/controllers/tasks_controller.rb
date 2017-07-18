@@ -6,12 +6,12 @@ class TasksController < ApplicationController
     redirect_to user_show_path(current_user)
   end
 
-  def edit
-    @task = Task.find_by_id(params.id)
-  end
-
+  #used to mark chore completed
   def update
-    @task = Task.find_by_id(params.id)
+      binding.pry
+    @task = Task.find_by_id(params[:id])
     binding.pry
+    @task.chore.mark_completed
+    @task.delete
   end
 end

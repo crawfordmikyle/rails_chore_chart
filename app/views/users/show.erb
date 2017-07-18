@@ -11,7 +11,7 @@
       <h3>Tasks</h3>
       <% @user.tasks.each do |task| %>
         <%= task.chore.name %>
-        <%= button_to "Done", edit_task_path(task) %>
+        <%= button_to "Done", {:controller => "tasks", :action => "update", :id => task.id}, method: :patch %>
         <br>
       <% end %>
     </div>
