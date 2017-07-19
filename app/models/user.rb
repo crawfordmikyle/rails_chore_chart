@@ -27,15 +27,19 @@ class User < ApplicationRecord
     request.save
   end
 
+  def inverse_friendship_lookup(friendship)
+    inverse_friendships.find_by(:user_id => friendship.friend_id)
+  end
+
   def confirmed_friends
-    @confirmed_friendships = []
+    @confirmed_friends = []
     friendships.each do |friendship|
-      inverse_friendship = Friendship.inverse_find(friendship)
+      inverse_friendships = inverse_friendship_lookup(friendship)
       if friendship.status == "Accepted" && inverse_friendship.status == "Accepted"
-        @confirmed_friendships << friendship.friend
+        @confirmed_friends << friendship.friend
       end
     end
-    @confirmed_friendships
+    @confirmed_friends
   end
 
 end
