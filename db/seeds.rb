@@ -52,4 +52,14 @@
       end
     end
 # Task
+
 # Frindship
+  friends =  [
+    {:friend_id => 2, :user_id => 1},
+    {:friend_id => 2, :user_id => 3},
+    {:friend_id => 2, :user_id => 4},
+  ]
+
+  friends.each do |fr|
+    Friendship.create(fr)
+  end

@@ -2,11 +2,14 @@
   <div class="row">
     <h1><%= @user.name %></h1>
   </div>
+
   <div class="row">
+
     <div class="col-md-4 well">
       <h3>Team</h3>
       <h2><%= @user.teams.first.name %></h2>
     </div>
+
     <div class="col-md-4 well">
       <h3>Tasks</h3>
       <% @user.tasks.each do |task| %>
@@ -15,20 +18,24 @@
         <br>
       <% end %>
     </div>
+
     <div class="col-md-4 well">
+
       <h3>Friends</h3>
       <% @user.confirmed_friends.each do |friend| %>
         <div class="well">
           <%= friend.name %>
         </div>
       <% end %>
+
       <h3>Pending Friend Requests</h3>
-      <%= @user.open_friend_requests.each do |friendship| %>
+      <%= @user.pending_friend_requests.each do |friendship| %>
         <div class="well">
-          <%= friendship.friend.name %>
+          <%= friendship.user.name %>
           <%= button_to "Accept", {:controller => "friendships", :action => "update", :id => friendship.id}, method: :patch %>
         </div>
       <% end %>
+
     </div>
-  </div>
+
 </div>

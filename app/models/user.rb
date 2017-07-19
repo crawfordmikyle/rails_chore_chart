@@ -12,11 +12,8 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :chores, through: :tasks
 
-  def open_friend_requests
-    @open_friend_requests = []
-    friendships.all.where(:accepted => nil).each do |friendship|
-      @open_friend_requests << friendship
-    end
+  def user_friendships
+    @user_friendships = Friendship.user_friendships(self)
   end
 
   def confirm_friendship(friendship)
@@ -24,12 +21,12 @@ class User < ApplicationRecord
     friendship.save
   end
 
-  def confirmed_friends
-    @confirmed_friends = []
-    friendships.all.where(:accepted => true ).each do |friendship|
-      @confirmed_friends << friendship.friend
-    end
-    @confirmed_friends
+  def confirmed_friend_requests 
+    @confirmed_friendships = user_friendships.keep_if{|fs| fs.accepted == true }
+  end
+
+  def pending_friend_requests
+    @pending_friend_requests = user_friendships.keep_if{|fs| fs.accepted == nil}
   end
 
   def current_team
