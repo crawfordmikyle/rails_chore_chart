@@ -31,7 +31,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       # t.datetime :locked_at
 
       # add name attr
-      t.string :name
+      t.string :name, default: "New User" 
       # add role attr
       t.string :role
 

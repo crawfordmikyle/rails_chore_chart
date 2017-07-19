@@ -7,7 +7,11 @@
 
     <div class="col-md-4 well">
       <h3>Team</h3>
-      <h2><%= @user.teams.first.name %></h2>
+      <% if !@user.teams.empty? %>
+        <h2><%= @user.teams.first.name %></h2>
+      <% end %>
+      <%= link_to "Create New Team", new_team_path %>
+      <%= link_to "List Teams", teams_path %>
     </div>
 
     <div class="col-md-4 well">
@@ -20,22 +24,12 @@
     </div>
 
     <div class="col-md-4 well">
-
       <h3>Friends</h3>
-      <% @user.confirmed_friends.each do |friend| %>
-        <div class="well">
-          <%= friend.name %>
-        </div>
-      <% end %>
 
       <h3>Pending Friend Requests</h3>
-      <%= @user.pending_friend_requests.each do |friendship| %>
-        <div class="well">
-          <%= friendship.user.name %>
-          <%= button_to "Accept", {:controller => "friendships", :action => "update", :id => friendship.id}, method: :patch %>
-        </div>
-      <% end %>
 
+      <h2>Team Invites</h2>
+      
     </div>
 
 </div>
