@@ -21,7 +21,9 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find_by_id(params[:id])
+    if current_user.team.id == params[:id]
+      @team = Team.find_by_id(params[:id])
+    end
   end
 
 private

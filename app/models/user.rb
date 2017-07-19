@@ -12,12 +12,9 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :chores, through: :tasks
 
-  def default_role
-    self.roll = "user"
-  end
-
-  def has_role?(role)
-
+  def confirm_friendship(friendship)
+    frindship.accepted = true
+    friendship.save
   end
 
   def confirmed_friends
