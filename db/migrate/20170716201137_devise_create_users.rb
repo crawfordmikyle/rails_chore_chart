@@ -32,9 +32,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
 
       # add name attr
       t.string :name
-      # add roll attr
-      t.string :roll
-      
+      # add role attr
+      t.string :role
+
       t.timestamps null: false
     end
 

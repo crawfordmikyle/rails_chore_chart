@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Authentication and Authorization
 gem 'devise'
-gem 'cancancan', '~> 2.0'
+#gem 'cancancan', '~> 2.0'
 gem 'omniauth'
 # Boot Strap SASS
 gem 'bootstrap-sass'
