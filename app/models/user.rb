@@ -12,6 +12,13 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :chores, through: :tasks
 
+  def open_friend_requests
+    @open_friend_requests = []
+    friendships.all.where(:accepted => nil).each do |friendship|
+      @open_friend_requests << friendship
+    end
+  end
+
   def confirm_friendship(friendship)
     frindship.accepted = true
     friendship.save
@@ -34,9 +41,8 @@ class User < ApplicationRecord
   end
 
   def friends_with(friend_id)
-    if friendships.find_by({:user_id => id, :friend_id => friend_id})
-      true
-    end
+
   end
+
 
 end
