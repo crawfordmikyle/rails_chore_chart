@@ -6,10 +6,13 @@
   <div class="row">
 
     <div class="col-md-4 well">
-      <h3>Team</h3>
+      <h3>Teams</h3>
       <% if !@user.teams.empty? %>
-        <h2><%= @user.teams.first.name %></h2>
+        <% @user.teams.each do |team| %>
+          <h2><%= team.name %></h2>
+        <% end %>
       <% end %>
+
       <%= link_to "Create New Team", new_team_path%>
       <%= link_to "List Teams", teams_path %>
     </div>
