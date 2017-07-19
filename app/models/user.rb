@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :teams, through: :user_teams
   has_many :friendships
   has_many :friends, through: :friendships
+  has_many :inverse_friendships, class_name => "Friendship", :foreign_key => "friend_id"
+  has_many :inverse_friends, through: :friendships, :source => :user
   has_many :tasks
   has_many :chores, through: :tasks
 
@@ -21,7 +23,7 @@ class User < ApplicationRecord
     friendship.save
   end
 
-  def confirmed_friend_requests 
+  def confirmed_friend_requests
     @confirmed_friendships = user_friendships.keep_if{|fs| fs.accepted == true }
   end
 

@@ -2,5 +2,6 @@
   <div class="well">
     <%= user.name %>
     <%= button_to "Friend Request", { controller: "friendships", action: "create", id: user.id }, method: :post %>
+    <%= button_to "Invite To Team", { controller: "friendships", action: "create", id: user.id }, method: :post %>
   </div>
 <% end %>

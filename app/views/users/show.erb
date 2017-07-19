@@ -10,7 +10,7 @@
       <% if !@user.teams.empty? %>
         <h2><%= @user.teams.first.name %></h2>
       <% end %>
-      <%= link_to "Create New Team", new_team_path %>
+      <%= link_to "Create New Team", new_team_path%>
       <%= link_to "List Teams", teams_path %>
     </div>
 
@@ -25,11 +25,8 @@
 
     <div class="col-md-4 well">
       <h3>Friends</h3>
-
       <h3>Pending Friend Requests</h3>
-
-      <h2>Team Invites</h2>
-      
+      <h3>Team Invites</h3>
     </div>
 
 </div>

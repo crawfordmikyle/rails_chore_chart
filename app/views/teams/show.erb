@@ -9,6 +9,8 @@
         <%= render partial: "users/user", locals: {user: user} %>
       <% end %>
 
+      <%= link_to "Invite Users", users_path %>
+
     </div>
     <div class="col-md-4">
       <h3>Chores</h3>
@@ -17,7 +19,7 @@
           <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
 
           <% if !chore.accepted && !chore.completed %>
-            <%= button_to "Accept Chore", { controller: "tasks", action: "create", id: chore.id }, method: :post %>
+            <%= button_to "Accept Chore", { :controller => "tasks", :action => "create", :id => chore.id }, method: :post %>
           <% end %>
 
           <% if current_user.accepted_chore(chore) %>
