@@ -9,10 +9,12 @@ class FriendshipsController < ApplicationController
 
   #used to confirm friendships
   def update
-    binding.pry
     @friendship = Friendship.find_by(params[:id])
-    @friendship.accepted = true
-    @friendship.save
+    @inverse_friendship = Frindship.inverse_find(@friendship)
+    if @inverse_friendship
+      @inverse_friendship.status = "Accepted"
+      @friendship.save
+    end
     redirect_to user_show_path(current_user.id)
   end
 

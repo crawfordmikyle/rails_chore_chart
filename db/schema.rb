@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170716221903) do
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
-    t.boolean "accepted"
+    t.string "status", default: "Pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170716221903) do
   create_table "user_teams", force: :cascade do |t|
     t.integer "user_id"
     t.integer "team_id"
-    t.boolean "accepted"
+    t.string "status", default: "Pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

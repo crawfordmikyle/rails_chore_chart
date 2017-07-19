@@ -28,7 +28,14 @@
 
     <div class="col-md-4 well">
       <h3>Friends</h3>
+      <% @user.confirmed_friends.each do |friend| %>
+        <%= friend.name  %>
+      <% end %>
       <h3>Pending Friend Requests</h3>
+      <% @user.inverse_friendships.each do |friendship| %>
+        <%= friendship.user.name %>
+        <%= button_to "Accepted", {:controller => "friendships", :action => "update", :id => friendship.id}, method: :patch %>
+      <% end %>
       <h3>Team Invites</h3>
     </div>
 
