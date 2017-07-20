@@ -9,7 +9,7 @@
       <h3>Teams</h3>
       <% if !@user.teams.empty? %>
         <% @user.teams.each do |team| %>
-          <h2><%= team.name %></h2>
+          <h2><%= link_to team.name, teams_path(team) %></h2>
         <% end %>
       <% end %>
 

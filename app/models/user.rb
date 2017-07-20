@@ -41,4 +41,10 @@ class User < ApplicationRecord
     @confirmed_friends
   end
 
+  def friends_with(user)
+    if confirmed_friends.include?(user)
+      true
+    end
+  end
+
 end

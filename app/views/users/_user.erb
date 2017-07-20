@@ -2,7 +2,9 @@
 <div class="well">
   <%= user.name %>
   <br>
-  <%= user.current_team.name %>
+  <% user.teams.each do |team| %>
+    <p>team.name</p>
+  <% end %>
 
   <% if !current_user.friends_with(user) %>
     <%= button_to "Friend Request", { controller: "friendships", action: "create", id: user.id }, method: :post %>
