@@ -20,4 +20,12 @@ class User < ApplicationRecord
     Task.all.find_by(:user_id => id, :chore_id => chore.id)
   end
 
+  def friendship_requests_to_confirm
+    friendship_requests.select{|request| request.status != "Accepted"}
+  end
+
+  def friendship_requests_waiting
+    friendship_requests.select{|request| request.status != "Accepted" && request.user_id != id}
+  end
+
 end

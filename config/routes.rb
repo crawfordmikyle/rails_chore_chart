@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :friendships, :only => [:new, :edit, :show, :create, :update, :destroy]
   resources :chores, :only => [:new, :edit, :show, :create, :destroy]
   resources :tasks, :only => [:new, :edit, :show, :create, :update, :destroy]
+  resources :friendship_requests
 end
