@@ -25,17 +25,7 @@
     Team.create(team)
   end
 # User Team
-  User.all.each do |user|
-    if user.id <= 2
-      user.user_teams.create({:team_id => 1})
-    elsif user.id > 2 && user.id <= 4
-      user.user_teams.create({:team_id => 2})
-    elsif user.id > 4 && user.id <= 6
-      user.user_teams.create({:team_id => 3})
-    else
-      user.user_teams.create({:team_id => 4})
-    end
-  end
+
 # Chore
   chore_data = [
     {:name => "Clean Bathroom", :value => 10},
@@ -54,15 +44,3 @@
 # Task
 
 # Frindship
-  friends =  [
-    {:friend_id => 2, :user_id => 1},
-    {:friend_id => 2, :user_id => 3},
-    {:friend_id => 2, :user_id => 4},
-    {:friend_id => 1, :user_id => 2},
-    {:friend_id => 3, :user_id => 2},
-    {:friend_id => 4, :user_id => 2},
-  ]
-
-  friends.each do |fr|
-    Friendship.create(fr)
-  end

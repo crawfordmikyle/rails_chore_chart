@@ -1,7 +1,7 @@
 <% @users.each do |user| %>
   <div class="well">
     <%= user.name %>
-    <%= button_to "Friend Request", { controller: "friendships", action: "create", id: user.id }, method: :post %>
+    <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
     <%= button_to "Invite To Team", { controller: "friendships", action: "create", id: user.id }, method: :post %>
   </div>
 <% end %>

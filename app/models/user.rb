@@ -7,13 +7,10 @@ class User < ApplicationRecord
   has_many :user_teams
   has_many :teams, through: :user_teams
 
-
   has_many :friendships
   has_many :friends, through: :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
-
-
 
   has_many :tasks
   has_many :chores, through: :tasks
@@ -23,6 +20,7 @@ class User < ApplicationRecord
   end
 
   def accepted_request(request)
+    binding.pry
     request.status = "Accepted"
     request.save
   end
@@ -34,9 +32,10 @@ class User < ApplicationRecord
   def confirmed_friends
     @confirmed_friends = []
     friendships.each do |friendship|
-      inverse_friendships = inverse_friendship_lookup(friendship)
-      if friendship.status == "Accepted" && inverse_friendship.status == "Accepted"
-        @confirmed_friends << friendship.friend
+      if inverse_friendship = inverse_friendship_lookup(friendship)
+        if friendship.status == "Accepted" && inverse_friendship.status == "Accepted"
+          @confirmed_friends << friendship.friend
+        end
       end
     end
     @confirmed_friends
