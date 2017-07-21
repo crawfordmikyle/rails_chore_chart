@@ -1,29 +1,33 @@
 <div class="container">
-
 	<div class="row login_box">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name),:html => { :class => "form-horizontal" }) do |f| %>
-        <div class="col-md-offset-5 col-md-3 login_control">
 
-          <h2>Log in</h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name),:html => { :class => "form" }) do |f| %>
+		          <h2>Log in</h2>
 
-            <div class="form_group">
-              <%= f.label :email, :class => 'col-sm-2 control-label' %><br />
-              <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-            </div>
+							<% if flash[:notice] %>
+								<%= flash[:notice] %>
+							<% end %>
 
-            <div class="form_group">
-              <%= f.label :password, :class => 'col-sm-2 control-label' %><br />
-              <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-            </div>
+							<% if flash[:alert] %>
+								<%= flash[:alert] %>
+							<% end %>
 
-            <br>
+		          <div class="form_group">
+		            <%= f.label :email, :class => 'col-sm-2 control-label' %><br />
+		            <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+		          </div>
 
-            <div class="action">
-              <%= f.submit "Log In", :class => 'btn btn-primary' %>
-            </div>
+		          <div class="form_group">
+		            <%= f.label :password, :class => 'col-sm-2 control-label' %><br />
+		            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+		          </div>
 
-          </div>
+		          <br>
+
+		          <div class="action">
+		            <%= f.submit "Log In", :class => 'btn btn-primary' %>
+		        	</div>
           <% end %>
-    </div>
 
+    </div>
 </div>
