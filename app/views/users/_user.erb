@@ -5,9 +5,8 @@
   <% user.teams.each do |team| %>
     <p>team.name</p>
   <% end %>
-
-  <% if !current_user.friends_with(user) %>
+  <% if !current_user.friends.include?(user) %>
     <%= button_to "Friend Request", { controller: "friendship_requests", action: "create", id: user.id }, method: :post %>
   <% end %>
-  
+
 </div>

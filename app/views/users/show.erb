@@ -12,10 +12,12 @@
           <h2><%= link_to team.name, team_path(team) %></h2>
         <% end %>
       <% end %>
-
       <% if !@user.user_team_requests.empty? %>
         <% @user.user_team_requests.each do |request| %>
-          <%= button_to "Accept", {:controller => "user_team_requests", :action => "update", :id => request.id}, method: :patch %>
+          <% if request.status != "Accepted" %>
+            <%= request.team.name %>
+            <%= button_to "Accept", {:controller => "user_team_requests", :action => "update", :id => request.id}, method: :patch %>
+          <% end %>
         <% end %>
       <% end %>
       <%= link_to "Create New Team", new_team_path%>
