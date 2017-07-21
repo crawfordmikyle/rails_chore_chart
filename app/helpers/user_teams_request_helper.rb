@@ -1,0 +1,2 @@
+module UserTeamsRequestHelper
+end
