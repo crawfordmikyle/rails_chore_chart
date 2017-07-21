@@ -21,6 +21,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @users = User.all
     @team = Team.find_by_id(params[:id])
   end
 

@@ -5,12 +5,22 @@
   <div class="row">
     <div class="col-md-4">
       <h3>Team Members</h3>
-      <% @team.users.each do |user| %>
-        <%= render partial: "users/user", locals: {user: user} %>
-      <% end %>
-
-      <%= link_to "Invite Users", users_path %>
-
+        <div class="well">
+          <% @team.users.each do |user| %>
+            <%= render partial: "users/user", locals: {user: user} %>
+            <% end %>
+          </div>
+      <h3>Invite New Members</h3>
+        <div class="well">
+          <% @users.each do |user| %>
+            <% if !@team.users.include?(user) %>
+              <div class="well">
+                <%= user.name %>
+                <%= button_to "Invite To Team", { controller: "user_teams_requests", action: "create", user_id: user.id, team_id: @team.id }, method: :post %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
     </div>
     <div class="col-md-4">
       <h3>Chores</h3>

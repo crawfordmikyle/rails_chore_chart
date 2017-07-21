@@ -3,6 +3,4 @@
     <%= user.name %>
 
     <%= button_to "Friend Request", { controller: "friendship_requests", action: "create", id: user.id }, method: :post %>
-    <%= button_to "Invite To Team", { controller: "friendships", action: "create", id: user.id }, method: :post %>
-  </div>
 <% end %>
