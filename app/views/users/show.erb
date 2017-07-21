@@ -9,10 +9,15 @@
       <h3>Teams</h3>
       <% if !@user.teams.empty? %>
         <% @user.teams.each do |team| %>
-          <h2><%= link_to team.name, teams_path(team) %></h2>
+          <h2><%= link_to team.name, team_path(team) %></h2>
         <% end %>
       <% end %>
 
+      <% if !@user.user_team_requests.empty? %>
+        <% @user.user_team_requests.each do |request| %>
+          <%= button_to "Accept", {:controller => "user_team_requests", :action => "update", :id => request.id}, method: :patch %>
+        <% end %>
+      <% end %>
       <%= link_to "Create New Team", new_team_path%>
       <%= link_to "List Teams", teams_path %>
     </div>

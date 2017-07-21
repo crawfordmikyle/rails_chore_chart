@@ -13,6 +13,6 @@ class FriendshipRequest < ApplicationRecord
     if friendship = friend.friendships.build({:user_id => friend_id, :friend_id => user_id})
       friendship.save
     end
-
   end
+  
 end

@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :chores, :only => [:new, :edit, :show, :create, :destroy]
   resources :tasks, :only => [:new, :edit, :show, :create, :update, :destroy]
   resources :friendship_requests
-  resources :user_teams_requests
+  resources :user_team_requests
   resources :user_teams
 end

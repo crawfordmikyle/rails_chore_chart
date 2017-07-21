@@ -1,2 +1,0 @@
-class UserTeamsRequest < ApplicationRecord
-end

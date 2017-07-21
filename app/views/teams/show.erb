@@ -16,7 +16,7 @@
             <% if !@team.users.include?(user) %>
               <div class="well">
                 <%= user.name %>
-                <%= button_to "Invite To Team", { controller: "user_teams_requests", action: "create", user_id: user.id, team_id: @team.id }, method: :post %>
+                <%= button_to "Invite To Team", { controller: "user_team_requests", action: "create", user_id: user.id, team_id: @team.id }, method: :post %>
               </div>
             <% end %>
           <% end %>
