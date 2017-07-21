@@ -15,10 +15,10 @@ class FriendshipRequestsController < ApplicationController
 
   #used to accept the request
   def update
-    binding.pry
     friendship_request = FriendshipRequest.find_by_id(params[:id])
     friendship_request.status = "Accepted"
     friendship_request.save
-    redirect_to create_friendship_path
+
+    friendship_request.create_friendship
   end
 end
