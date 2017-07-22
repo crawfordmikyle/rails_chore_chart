@@ -9,8 +9,11 @@ Rails.application.routes.draw do
   resources :friendship_requests, :only => [:create, :update, :destroy]
   resources :user_team_requests, :only => [:create, :update, :destroy]
   resources :user_teams, :only => [:create, :update, :destroy]
+  resources :chores
 
-  namespace :teams do
-    resources :chores, :only => [:new, :edit, :show, :create, :destroy]
-  end
+  get 'teams/:team_id/chores/new' => 'chores#new', as: :new_team_chore
+  post 'teams/:team_id/chores/new' => 'chores#create', as: :create_team_chore
+  get 'teams/:team_id/chores' => 'chores#show', as: :team_chores
+  get 'teams/:team_id/chore/:chore_id' => 'chore#show', as: :team_chore
+
 end

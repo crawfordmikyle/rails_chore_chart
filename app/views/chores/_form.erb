@@ -8,7 +8,8 @@
   <% end %>
 </div>
 
-<%= form_for @chore do |f| %>
+<%= form_for @chore  do |f| %>
+<%= f.hidden_field :team_id, :value => params[:team_id] %>
   <div class="control-group">
     <%= f.label :name, "Chore Name" %>
     <%= f.text_field :name %>
