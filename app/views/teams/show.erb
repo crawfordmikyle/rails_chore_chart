@@ -2,12 +2,16 @@
   <div class="row">
     <h1><%= @team.name %></h1>
   </div>
-  <% if flash[:notice] %>
-    <%= flash[:notice] %>
-  <% end %>
-  <% if flash[:alert] %>
-    <%= flash[:alert] %>
-  <% end %>
+
+  <div class="row">
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+    <% if flash[:alert] %>
+      <%= flash[:alert] %>
+    <% end %>
+  </div>
+
   <div class="row">
 
     <div class="col-md-4">
@@ -32,29 +36,28 @@
 
     <div class="col-md-4">
       <h3>Chores</h3>
+
       <div class="well">
       <% @team.chores.each do |chore| %>
         <div class="well">
           <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
-
           <% if !chore.accepted && !chore.completed %>
             <%= button_to "Accept Chore", { :controller => "tasks", :action => "create", :id => chore.id }, method: :post %>
           <% end %>
-
           <% if current_user.accepted_chore(chore) %>
             <%= button_to "Done", {:controller => "tasks", :action => "update", :id => chore.task_id}, method: :patch %>
           <% end %>
-
           <% if chore.completed %>
             COMPLETED
           <% end %>
-
           <% if chore.accepted %>
             ACCEPTED
           <% end %>
-
         </div>
       <% end %>
+
+        <%= button_to "Create New Chore", { :controller => "chores", :action => "create", :chore => {:team_id => @team.id} }, method: :get %>
+
       </div>
     </div>
 
