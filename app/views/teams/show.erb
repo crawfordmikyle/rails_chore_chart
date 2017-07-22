@@ -56,7 +56,7 @@
         </div>
       <% end %>
 
-        <%= button_to "Create New Chore", { :controller => "chores", :action => "create", :chore => {:team_id => @team.id} }, method: :get %>
+        <%= link_to "New Chore", new_teams_chore_path %>
 
       </div>
     </div>

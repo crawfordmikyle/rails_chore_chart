@@ -1,4 +1,4 @@
-class ChoresController < ApplicationController
+class Teams::ChoresController < ApplicationController
   before_action :authenticate_user!
 
   def new
