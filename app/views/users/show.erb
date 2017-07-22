@@ -4,7 +4,12 @@
   </div>
 
   <div class="row">
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </div>
 
+  <div class="row">
     <div class="col-md-4 well">
       <h3>Teams</h3>
       <% if !current_user.teams.empty? %>

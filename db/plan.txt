@@ -34,6 +34,14 @@ tables
       belongs_to User
       belongs_to Team
 
+  UserTeamRequest
+    attributes
+      user_id
+      team_id
+      accepted?
+    associations
+      belongs_to User
+      belongs_to Team
 
   Chore
     attributes
@@ -61,3 +69,20 @@ tables
     associations
       belongs_to User
       belongs_to Friend class User
+
+  FriendshipRequests
+    attributes
+      user_id
+      friend_id
+      accepted?
+    associations
+      belongs_to User
+      belongs_to Friend class User
+
+
+Need to do
+  add logic for auth
+  fix so you cant send tons of the same requests
+  create delete for teams team-members and friends
+
+  see if there is a better way to handle user_friend relationships and requests 
