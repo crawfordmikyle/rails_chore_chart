@@ -2,7 +2,14 @@
   <div class="row">
     <h1><%= @team.name %></h1>
   </div>
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+  <% if flash[:alert] %>
+    <%= flash[:alert] %>
+  <% end %>
   <div class="row">
+
     <div class="col-md-4">
       <h3>Team Members</h3>
         <div class="well">
@@ -22,10 +29,12 @@
           <% end %>
         </div>
     </div>
+
     <div class="col-md-4">
       <h3>Chores</h3>
+      <div class="well">
       <% @team.chores.each do |chore| %>
-        <div class="">
+        <div class="well">
           <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
 
           <% if !chore.accepted && !chore.completed %>
@@ -45,11 +54,13 @@
           <% end %>
 
         </div>
-        <br>
       <% end %>
+      </div>
     </div>
+
     <div class="col-md-4">
       <h3>Tasks Past Due</h3>
     </div>
+
   </div>
 </div>

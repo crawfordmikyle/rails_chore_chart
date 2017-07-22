@@ -7,8 +7,10 @@ class ChoresController < ApplicationController
 
   def create
     if @chore = current_user.current_team.chores.create(chore_params)
+      flash[:notice] = "Chore created successfully "
       redirect_to chore_path(@chore)
     else
+      flash[:alert] = "Woops that entry seems to be invalid"
       redirect_to new_chore_path
     end
   end

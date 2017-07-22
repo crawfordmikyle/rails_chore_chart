@@ -7,53 +7,59 @@
     <% if flash[:notice] %>
       <%= flash[:notice] %>
     <% end %>
+    <% if flash[:alert] %>
+      <%= flash[:alert] %>
+    <% end %>
   </div>
 
   <div class="row">
-    <div class="col-md-4 well">
+    <div class="col-md-4">
       <h3>Teams</h3>
-      <% if !current_user.teams.empty? %>
-        <% current_user.teams.each do |team| %>
-          <h2><%= link_to team.name, team_path(team) %></h2>
-        <% end %>
-      <% end %>
-
-      <% if !current_user.user_team_requests.empty? %>
-        <% current_user.user_team_requests.each do |request| %>
-          <% if request.status != "Accepted" %>
-            <%= request.team.name %>
-            <%= button_to "Accept", {:controller => "user_team_requests", :action => "update", :id => request.id}, method: :patch %>
+      <div class="well">
+        <% if !current_user.teams.empty? %>
+          <% current_user.teams.each do |team| %>
+            <h2><%= link_to team.name, team_path(team) %></h2>
           <% end %>
         <% end %>
-      <% end %>
 
-      <%= link_to "Create New Team", new_team_path%>
-      <%= link_to "List Teams", teams_path %>
+        <% if !current_user.user_team_requests.empty? %>
+          <% current_user.user_team_requests.each do |request| %>
+            <% if request.status != "Accepted" %>
+              <%= request.team.name %>
+              <%= button_to "Accept", {:controller => "user_team_requests", :action => "update", :id => request.id}, method: :patch %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+        <%= link_to "Create New Team", new_team_path%>
+        <%= link_to "List Teams", teams_path %>
+      </div>
     </div>
 
-    <div class="col-md-4 well">
+    <div class="col-md-4">
       <h3>Tasks</h3>
-      <% current_user.tasks.each do |task| %>
-        <%= task.chore.name %>
-        <%= button_to "Done", {:controller => "tasks", :action => "update", :id => task.id}, method: :patch %>
-        <br>
-      <% end %>
-    </div>
-
-    <div class="col-md-4 well">
-      <h3>Friends</h3>
-      <% if !current_user.friendships.empty? %>
-        <% current_user.friendships.each do |friendship| %>
-          <%= friendship.friend.name %>
+      <div class="well">
+        <% current_user.tasks.each do |task| %>
+          <%= task.chore.name %>
+          <%= button_to "Done", {:controller => "tasks", :action => "update", :id => task.id}, method: :patch %>
+          <br>
         <% end %>
-      <% end %>
-      <h3>Pending Friend Requests</h3>
-        <h4>Need Confirm</h4>
-          <% current_user.friendship_requests_to_confirm.each do |request| %>
-            <p><%= request.friend.name  %></p>
-            <%= button_to "Accept", {:controller => "friendship_requests", :action => "update", :id => request.id}, method: :patch %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Friends</h3>
+      <div class="well">
+        <% if !current_user.friendships.empty? %>
+          <% current_user.friendships.each do |friendship| %>
+            <%= friendship.friend.name %>
           <% end %>
-      <h3>Team Invites</h3>
+        <% end %>
+        <h4>Pending Friend Requests</h4>
+            <% current_user.friendship_requests_to_confirm.each do |request| %>
+              <p><%= request.friend.name  %></p>
+              <%= button_to "Accept", {:controller => "friendship_requests", :action => "update", :id => request.id}, method: :patch %>
+            <% end %>
+      </div>
     </div>
 
 </div>
