@@ -32,8 +32,8 @@
             <h2><%= link_to team.name, team_path(team) %></h2>
           <% end %>
         <% end %>
-
         <% if !current_user.user_team_requests.empty? %>
+        <% binding.pry %>
           <% current_user.user_team_requests.each do |request| %>
             <% if request.status != "Accepted" %>
               <%= request.team.name %>

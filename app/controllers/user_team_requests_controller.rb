@@ -1,7 +1,7 @@
 class UserTeamRequestsController < ApplicationController
   def create
-    if user_team_request = current_user.user_team_requests.build({:user_id => params[:user_id], :team_id => params[:team_id]})
-      user = User.find_by_id(params[:user_id])
+    user = User.find_by_id(params[:user_id])
+    if user_team_request = user.user_team_requests.build({:user_id => params[:user_id], :team_id => params[:team_id]})
       if !user.has_user_team_reqiest?(user_team_request)
         user_team_request.status = "Pending"
         user_team_request.save
