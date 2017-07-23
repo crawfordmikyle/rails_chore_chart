@@ -14,5 +14,5 @@ class FriendshipRequest < ApplicationRecord
       friendship.save
     end
   end
-  
+
 end

@@ -1,10 +1,12 @@
 class FriendshipRequestsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @friend = User.find_by_id(params[:id])
     @friendship_request = friendship_request = current_user.friendship_requests.build({friend_id: @friend.id})
     @inverse_friendship_request = friendship_request = @friend.friendship_requests.build({friend_id: current_user.id})
 
-    if @friendship_request.new_request? && @@inverse_friendship_request.new_request?
+    if !current_user.has_friendship_reqiest?(@friend) && !@friend.has_friendship_reqiest?(current_user)
       @friendship_request.status = "Accepted"
       @friendship_request.save
       @inverse_friendship_request.save
@@ -23,5 +25,9 @@ class FriendshipRequestsController < ApplicationController
     friendship_request.save
 
     friendship_request.create_friendship
+    flash[:success] = "Friend Added"
+    redirect_to user_path(current_user)
   end
+
+
 end
