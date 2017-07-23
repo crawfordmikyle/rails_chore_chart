@@ -1,10 +1,20 @@
 class UserTeamRequestsController < ApplicationController
   def create
     if user_team_request = current_user.user_team_requests.build({:user_id => params[:user_id], :team_id => params[:team_id]})
-      user_team_request.status = "Pending"
-      user_team_request.save
-    end
+      user = User.find_by_id(params[:user_id])
+      if !user.has_user_team_reqiest?(user_team_request)
+        user_team_request.status = "Pending"
+        user_team_request.save
+        flash[:success] = "Request Sent!"
+        redirect_to team_path(params[:team_id])
+      else
+        flash[:notice] = "That Request Was Already Sent"
+        redirect_to team_path(params[:team_id])
+      end
+    else
+      flash[:alert] = "This is in invalid request"
       redirect_to team_path(params[:team_id])
+    end
   end
 
   #used to accept the request

@@ -11,13 +11,8 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = Team.create({:name => team_params[:name]})
-    if team_params[:user_teams_attributes]
-      team_params[:user_teams_attributes][:user_id].each do |user_id|
-        @team.user_teams.create({:user_id => user_id})
-      end
-    end
-      redirect_to teams_path(@team)
+    current_user.teams.create(team_params)
+    redirect_to teams_path(@team)
   end
 
   def show
@@ -27,6 +22,6 @@ class TeamsController < ApplicationController
 
 private
   def team_params
-    params.require(:team).permit(:name, :user_teams_attributes => {:user_id => []})
+    params.require(:team).permit(:name)
   end
 end

@@ -45,4 +45,20 @@ class User < ApplicationRecord
       false
     end
   end
+
+  def has_user_team?(team)
+    if friends.include?(friend)
+      true
+    else
+      false
+    end
+  end
+
+  def has_user_team_reqiest?(team)
+    if user_team_requests.find_by(:team_id => team.id)
+      true
+    else
+      false
+    end
+  end
 end
