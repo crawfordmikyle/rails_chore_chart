@@ -1,7 +1,8 @@
 class UserTeamRequestsController < ApplicationController
   def create
-    user = User.find_by_id(params[:user_id])
-    if user_team_request = user.user_team_requests.build({:user_id => params[:user_id], :team_id => params[:team_id]})
+    binding.pry
+    user = User.find_by_id(params[:request][:user_id])
+    if user_team_request = user.user_team_requests.build(user_team_request_params)
       if !user.has_user_team_reqiest?(user_team_request)
         user_team_request.status = "Pending"
         user_team_request.save
@@ -24,5 +25,11 @@ class UserTeamRequestsController < ApplicationController
     user_team_request.save
 
     user_team_request.create_user_team
+  end
+
+  private
+
+  def user_team_request_params
+    params.require(:request).permit(:user_id, :team_id)
   end
 end
