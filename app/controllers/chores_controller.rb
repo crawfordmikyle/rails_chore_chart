@@ -5,7 +5,7 @@ class ChoresController < ApplicationController
       @chore = Chore.new
       @team = Team.find_by_id(params[:team_id].to_i)
       if !current_user.teams.include?(@team)
-        flash[:notice] = "You can only create chores for your team"
+        flash[:alert] = "You can only create chores for your team"
         redirect_to team_path(@team)
       end
   end
@@ -15,14 +15,14 @@ class ChoresController < ApplicationController
       if current_user.teams.include?(@team)
         @chore = @team.chores.build(chore_params)
         @chore.save
-        flash[:notice] = "Chore Created"
+        flash[:success] = "Chore Created"
         redirect_to team_path(@team)
       else
-        flash[:notice] = "You can only create chores for your team"
+        flash[:alert] = "You can only create chores for your team"
         redirect_to team_path(@team)
       end
     else
-      flash[:notice] = "You can only create chores for your team"
+      flash[:alert] = "You can only create chores for your team"
       redirect_to team_path(@team)
     end
   end

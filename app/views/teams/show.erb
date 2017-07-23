@@ -4,12 +4,25 @@
   </div>
 
   <div class="row">
-    <% if flash[:notice] %>
-      <%= flash[:notice] %>
+
+    <% if flash[:success] %>
+      <div class="alert alert-success">
+        <%= flash[:success] %>
+      </div>
     <% end %>
+
     <% if flash[:alert] %>
-      <%= flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
     <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
   </div>
 
   <div class="row">
@@ -61,7 +74,7 @@
           <% if chore.accepted %>
             ACCEPTED
           <% end %>
-          
+
         </div>
       <% end %>
       <% if current_user.teams.include?(@team) %>
