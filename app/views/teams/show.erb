@@ -19,19 +19,23 @@
         <div class="well">
           <% @team.users.each do |user| %>
             <%= render partial: "users/user", locals: {user: user} %>
-            <% end %>
-          </div>
-      <h3>Invite New Members</h3>
-        <div class="well">
-          <% @users.each do |user| %>
-            <% if !@team.users.include?(user) %>
-              <div class="well">
-                <%= user.name %>
-                <%= button_to "Invite To Team", { controller: "user_team_requests", action: "create", user_id: user.id, team_id: @team.id }, method: :post %>
-              </div>
-            <% end %>
           <% end %>
         </div>
+
+      <% if current_user.teams.include?(@team) %>
+        <h3>Invite New Members</h3>
+          <div class="well">
+            <% @users.each do |user| %>
+              <% if !@team.users.include?(user) %>
+                <div class="well">
+                  <%= user.name %>
+                  <%= button_to "Invite To Team", { controller: "user_team_requests", action: "create", user_id: user.id, team_id: @team.id }, method: :post %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+
     </div>
 
     <div class="col-md-4">
@@ -41,28 +45,37 @@
       <% @team.chores.each do |chore| %>
         <div class="well">
           <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
-          <% if !chore.accepted && !chore.completed %>
+
+          <% if !chore.accepted && !chore.completed && current_user.teams.include?(@team)%>
             <%= button_to "Accept Chore", { :controller => "tasks", :action => "create", :id => chore.id }, method: :post %>
           <% end %>
+
           <% if current_user.accepted_chore(chore) %>
             <%= button_to "Done", {:controller => "tasks", :action => "update", :id => chore.task_id}, method: :patch %>
           <% end %>
+
           <% if chore.completed %>
             COMPLETED
           <% end %>
+
           <% if chore.accepted %>
             ACCEPTED
           <% end %>
+          
         </div>
       <% end %>
-
+      <% if current_user.teams.include?(@team) %>
         <%= link_to "New Chore", new_team_chore_path(@team) %>
+      <% end %>
 
       </div>
     </div>
 
     <div class="col-md-4">
       <h3>Tasks Past Due</h3>
+      <div class="well">
+
+      </div>
     </div>
 
   </div>

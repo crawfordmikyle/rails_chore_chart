@@ -8,12 +8,4 @@ class Team < ApplicationRecord
   accepts_nested_attributes_for :user_teams
 
   validates :name, presence: true
-
-  def confirmed_users=
-    @confirmed_users = nil
-  end
-
-  def confirmed_users
-    @confirmed_users
-  end
 end
