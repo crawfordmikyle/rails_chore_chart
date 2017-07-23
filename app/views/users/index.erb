@@ -1,6 +1,6 @@
 <% @users.each do |user| %>
   <div class="well">
     <%= user.name %>
-    <%= button_to "Friend Request", { controller: "friendship_requests", action: "create", id: user.id }, method: :post %>
+    <%= button_to "Friend Request", { controller: "friendship_requests", action: "create", id: user.id }, method: :post, :class => "btn btn-primary"  %>
   </div>
 <% end %>

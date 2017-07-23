@@ -42,7 +42,7 @@
               <% if !@team.users.include?(user) %>
                 <div class="well">
                   <%= user.name %>
-                  <%= button_to "Invite To Team", { controller: "user_team_requests", action: "create", user_id: user.id, team_id: @team.id }, method: :post %>
+                  <%= button_to "Invite To Team", { controller: "user_team_requests", action: "create", user_id: user.id, team_id: @team.id }, method: :post, :class => "btn btn-primary"  %>
                 </div>
               <% end %>
             <% end %>
@@ -60,11 +60,11 @@
           <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
 
           <% if !chore.accepted && !chore.completed && current_user.teams.include?(@team)%>
-            <%= button_to "Accept Chore", { :controller => "tasks", :action => "create", :id => chore.id }, method: :post %>
+            <%= button_to "Accept Chore", { :controller => "tasks", :action => "create", :id => chore.id }, method: :post, :class => "btn btn-primary"  %>
           <% end %>
 
           <% if current_user.accepted_chore(chore) %>
-            <%= button_to "Done", {:controller => "tasks", :action => "update", :id => chore.task_id}, method: :patch %>
+            <%= button_to "Done", {:controller => "tasks", :action => "update", :id => chore.task_id}, method: :patch, :class => "btn btn-primary"  %>
           <% end %>
 
           <% if chore.completed %>
