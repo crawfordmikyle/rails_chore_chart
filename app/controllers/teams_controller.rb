@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
 
   def create
     current_user.teams.create(team_params)
-    redirect_to teams_path(@team)
+    redirect_to team_path(@team)
   end
 
   def show
