@@ -3,13 +3,25 @@
 	  <%= form_for(resource, as: resource_name, url: session_path(resource_name),:html => { :class => "form" }) do |f| %>
       <h2>Log in</h2>
 
-			<% if flash[:notice] %>
-				<%= flash[:notice] %>
-			<% end %>
+			<div class="row">
+		    <% if flash[:success] %>
+		      <div class="alert alert-success">
+		        <%= flash[:success] %>
+		      </div>
+		    <% end %>
 
-			<% if flash[:alert] %>
-				<%= flash[:alert] %>
-			<% end %>
+		    <% if flash[:alert] %>
+		      <div class="alert alert-danger">
+		        <%= flash[:alert] %>
+		      </div>
+		    <% end %>
+
+		    <% if flash[:notice] %>
+		      <div class="alert alert-info">
+		        <%= flash[:notice] %>
+		      </div>
+		    <% end %>
+		  </div>
 
       <div class="form_group">
         <%= f.label :email, :class => 'col-sm-2 control-label' %><br />
