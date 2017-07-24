@@ -1,7 +1,8 @@
-<% @users.each do |user| %>
-  <% if user != current_user %>
-    <div class="well">
-      <%= render partial: "user", locals: {:user => user} %>
-    </div>
+<h1>Users</h1>
+<div class="well">
+  <% @users.each do |user| %>
+      <% if user != current_user %>
+          <%= render partial: "user", locals: {:user => user} %>
+      <% end %>
   <% end %>
-<% end %>
+</div>
