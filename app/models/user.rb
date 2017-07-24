@@ -57,7 +57,7 @@ class User < ApplicationRecord
   end
 
   def has_user_team?(team)
-    if friends.include?(friend)
+    if teams.include?(team)
       true
     else
       false
