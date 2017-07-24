@@ -2,33 +2,7 @@
 	<div class="row login_box">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name),:html => { :class => "form" }) do |f| %>
 			<h2>Sign up</h2>
-			<div class="row">
-				<% if flash[:success] %>
-					<div class="alert alert-success">
-						<%= flash[:success] %>
-					</div>
-				<% end %>
-
-				<% if flash[:alert] %>
-					<div class="alert alert-danger">
-						<%= flash[:alert] %>
-					</div>
-				<% end %>
-
-				<% if flash[:notice] %>
-					<div class="alert alert-info">
-						<%= flash[:notice] %>
-					</div>
-				<% end %>
-			</div>
-      <% if flash[:notice] %>
-        <%= flash[:notice] %>
-      <% end %>
-
-      <% if flash[:alert] %>
-        <%= flash[:alert] %>
-      <% end %>
-
+				<%= devise_error_messages! %>
         <div class="form_group">
           <%= f.label :email, :class => 'col-sm-2 control-label' %><br />
           <%= f.email_field :email, autofocus: true, class: 'form-control' %>

@@ -1,25 +1,7 @@
 <h2>Change your password</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <div class="row">
-    <% if flash[:success] %>
-      <div class="alert alert-success">
-        <%= flash[:success] %>
-      </div>
-    <% end %>
 
-    <% if flash[:alert] %>
-      <div class="alert alert-danger">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
-
-    <% if flash[:notice] %>
-      <div class="alert alert-info">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-  </div>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="field">
