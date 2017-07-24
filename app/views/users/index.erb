@@ -1,6 +1,7 @@
 <% @users.each do |user| %>
-  <div class="well">
-    <%= user.name %>
-    <%= button_to "Friend Request", { controller: "friendship_requests", action: "create", id: user.id }, method: :post, :class => "btn btn-primary"  %>
-  </div>
+  <% if user != current_user %>
+    <div class="well">
+      <%= render partial: "user", locals: {:user => user} %>
+    </div>
+  <% end %>
 <% end %>
