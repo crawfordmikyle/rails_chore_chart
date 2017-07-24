@@ -7,54 +7,33 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <style>
-  /* added to fix navbar blocking page content */
-    body { padding-top: 40px; }
-    @media screen and (max-width: 768px) {
-      body { padding-top: 0px; }
-      }
-  </style>
-
   </head>
 
   <body>
-    <nav id="mainNav" class="navbar navbar-inverse bg-inverse navbar-fixed-top">
-      <div class="container">
-
-        <!-- Brand and toggle get grouped for better mobile display -->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-          </button>
-
-          <a class="navbar-brand page-scroll" href="#page-top">Rails Chore Chart</a>
+          <a class="navbar-brand" href="/">Rails Chore Chart</a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <% if current_user %>
-              <li>
-                <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-              </li>
-              <li>
-                <%= link_to "My Profile", user_path(current_user.id) %>
-              </li>
-            <% else %>
-              <li>
-                <%= link_to('Sign In', new_user_session_path) %>
-              </li>
-              <li>
-                <%= link_to('Sign Up', new_user_registration_path) %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="#">Page 1</a></li>
+          <li><a href="#">Page 2</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li><a href="/user/<%= current_user.id %>"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+            <li><a href="/users/sign_out" method="POST"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+          <% else %>
+            <li><a href="/users/sign_up"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/users/sign_in"><span class="glyphicon glyphicon-log-out"></span>Sign In</a></li>
+          <% end %>
+        </ul>
       </div>
-      <!-- /.container-fluid -->
     </nav>
-    
+
     <%= yield %>
 
   </body>
