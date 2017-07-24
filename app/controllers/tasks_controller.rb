@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   def create
     binding.pry
-    Task.create({:chore_id => params[:id], :user_id => current_user.id})
+    Task.create(task_params)
     redirect_to team_path(current_user.teams.first.id)
   end
 
@@ -19,6 +19,12 @@ class TasksController < ApplicationController
       flash[:notice] = "You can't complete a chore you haven't accepted"
       redirect_to user_path(current_user)
     end
+  end
+
+private
+
+  def task_params
+    params.require(:task_args).permit(:chore_id, :user_id)
   end
 
 end
