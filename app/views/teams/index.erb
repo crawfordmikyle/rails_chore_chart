@@ -1,3 +1,4 @@
+<h1>Teams</h1>
 <% @teams.each do |team| %>
-  <h3><%= link_to team.name, team_path(team) %></h3>
+  <%= render partial: "team", locals: {:team => team} %>
 <% end %>
