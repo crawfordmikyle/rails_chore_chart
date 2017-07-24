@@ -1,10 +1,12 @@
 <!-- Short user info for friends and team member box-->
 <div class="well">
+  
   <h4><%= user.name %></h4>
-  <br>
+
   <% user.teams.each do |team| %>
     <p><%= team.name %></p>
   <% end %>
+
   <% if !current_user.friends.include?(user) && user != current_user%>
     <%= button_to "Friend Request", { controller: "friendship_requests", action: "create", id: user.id }, method: :post, :class => "btn btn-primary" %>
   <% end %>
