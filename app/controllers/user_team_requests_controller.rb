@@ -24,6 +24,8 @@ class UserTeamRequestsController < ApplicationController
     user_team_request.save
 
     user_team_request.create_user_team
+    flash[:success] = "Team Request Accepted!"
+    
     redirect_to user_path(current_user)
   end
 

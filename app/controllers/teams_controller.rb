@@ -17,7 +17,7 @@ class TeamsController < ApplicationController
       flash[:success] = "Successfully Created Team"
       redirect_to team_path(team)
     else
-      flash[:alert] = "Invalid Values"
+      flash[:alert] = "Invalid Name"
       redirect_to new_team_path
     end
   end
