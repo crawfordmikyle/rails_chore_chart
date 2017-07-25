@@ -11,8 +11,15 @@ class TeamsController < ApplicationController
   end
 
   def create
-    current_user.teams.create(team_params)
-    redirect_to team_path(current_user.teams.last)
+    if team = current_user.teams.build(team_params).save
+      team = Team.last
+      current_user.build_user_team(team)
+      flash[:success] = "Successfully Created Team"
+      redirect_to team_path(team)
+    else
+      flash[:alert] = "Invalid Values"
+      redirect_to new_team_path
+    end
   end
 
   def show
@@ -22,6 +29,6 @@ class TeamsController < ApplicationController
 
 private
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, :user_id => current_user.id)
   end
 end
