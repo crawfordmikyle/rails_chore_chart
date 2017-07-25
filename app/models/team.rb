@@ -9,4 +9,8 @@ class Team < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
+
+  def link_to_current_user(user)
+    user.user_teams.build({:team_id => self.id, :status => "Accepted"}).save
+  end
 end

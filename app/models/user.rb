@@ -71,8 +71,5 @@ class User < ApplicationRecord
       false
     end
   end
-
-  def build_user_team(team)
-    user_teams.create({:user_id => id, :team_id => team.id}).save
-  end
+  
 end
