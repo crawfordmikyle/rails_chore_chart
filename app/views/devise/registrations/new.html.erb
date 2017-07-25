@@ -8,6 +8,11 @@
           <%= f.email_field :email, autofocus: true, class: 'form-control' %>
         </div>
 
+				<div class="form_group">
+					<%= f.label :name, :class => 'col-sm-2 control-label' %><br />
+					<%= f.text_field :name, autofocus: true, class: 'form-control' %>
+				</div>
+
         <div class="form_group">
           <%= f.label :password, :class => 'col-sm-2 control-label' %>
           <% if @minimum_password_length %>
