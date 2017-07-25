@@ -23,8 +23,12 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @users = User.all
-    @team = Team.find_by_id(params[:id])
+    if @team = Team.find_by_id(params[:id])
+      @users = User.all
+    else
+      flash[:alert] = "I can't find that team!"
+      redirect_to teams_path
+    end
   end
 
 private
