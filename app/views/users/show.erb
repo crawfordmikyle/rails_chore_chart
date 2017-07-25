@@ -33,11 +33,10 @@
           <% end %>
         <% end %>
         <% if !current_user.user_team_requests.empty? %>
-        <% binding.pry %>
           <% current_user.user_team_requests.each do |request| %>
             <% if request.status != "Accepted" %>
               <%= request.team.name %>
-              <%= button_to "Accept", {:controller => "user_team_requests", :action => "update", :id => request.id}, method: :patch %>
+              <%= button_to "Accept", {:controller => "user_team_requests", :action => "update", :id => request.id}, method: :patch, :class => "btn btn-primary"  %>
             <% end %>
           <% end %>
         <% end %>
@@ -52,7 +51,7 @@
       <div class="well">
         <% current_user.tasks.each do |task| %>
           <%= task.chore.name %>
-          <%= button_to "Done", {:controller => "tasks", :action => "update", :id => task.id}, method: :patch %>
+          <%= button_to "Done", {:controller => "tasks", :action => "update", :id => task.id}, method: :patch, :class => "btn btn-primary"  %>
           <br>
         <% end %>
       </div>
@@ -68,7 +67,7 @@
         <h4>Pending Friend Requests</h4>
             <% current_user.friendship_requests_to_confirm.each do |request| %>
               <p><%= request.friend.name  %></p>
-              <%= button_to "Accept", {:controller => "friendship_requests", :action => "update", :id => request.id}, method: :patch %>
+              <%= button_to "Accept", {:controller => "friendship_requests", :action => "update", :id => request.id}, method: :patch, :class => "btn btn-primary"  %>
             <% end %>
       </div>
     </div>
