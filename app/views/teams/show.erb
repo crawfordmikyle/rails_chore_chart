@@ -35,19 +35,8 @@
 
       <% if current_user.teams.include?(@team) %>
         <h3>Invite New Members</h3>
-          <div class="well">
-            <% @users.each do |user| %>
-              <% if !@team.users.include?(user) %>
-                <div class="well">
-                  <%= user.name %>
-                  <% if !user.has_user_team_reqiest?(@team) %>
-                    <%= button_to "Invite To Team", { controller: "user_team_requests", action: "create", :request => {:user_id => user.id, :team_id => @team.id} }, method: :post, :class => "btn btn-primary"  %>
-                  <% end %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
+        <%= render @users %>
+      <% end %>
 
     </div>
 
