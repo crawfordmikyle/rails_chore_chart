@@ -3,11 +3,11 @@
 
   <% if @team %>
     <% if !user.teams.include?(@team) %>
-      <%= button_to "Invite To Team", { controller: "user_team_requests", action: "create", :request => {:user_id => user.id, :team_id => @team.id} }, method: :post, :class => "btn btn-primary"  %>
+      <%= button_to "Invite To Team", { controller: "user_team_requests", action: "create", :request => {:user_id => user.id, :team_id => @team.id} }, method: :post, :class => "btn-sm btn-primary"  %>
     <% end %>
   <% end %>
 
   <% if !current_user.friends.include?(user) && user != current_user%>
-    <%= button_to "Friend Request", { controller: "friendship_requests", action: "create", id: user.id }, method: :post, :class => "btn btn-primary" %>
+    <%= button_to "Friend Request", { controller: "friendship_requests", action: "create", id: user.id }, method: :post, :class => "btn-sm btn-primary" %>
   <% end %>
 </div>
