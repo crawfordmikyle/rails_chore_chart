@@ -30,9 +30,7 @@
     <div class="col-md-4">
       <h3>Team Members</h3>
         <div class="well">
-          <% @team.users.each do |user| %>
-              <%= render partial: "users/user", locals: {user: user} %>
-          <% end %>
+          <%= render @team.users %>
         </div>
 
       <% if current_user.teams.include?(@team) %>
@@ -55,15 +53,11 @@
 
     <div class="col-md-4">
       <h3>Chores</h3>
-
       <div class="well">
-
-      <%= render @team.chores %>
-
-      <% if current_user.teams.include?(@team) %>
-        <%= link_to "New Chore", new_team_chore_path(@team) %>
-      <% end %>
-
+        <%= render @team.chores %>
+        <% if current_user.teams.include?(@team) %>
+          <%= link_to "New Chore", new_team_chore_path(@team) %>
+        <% end %>
       </div>
     </div>
 
