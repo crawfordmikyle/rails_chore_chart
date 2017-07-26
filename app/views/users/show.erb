@@ -28,9 +28,7 @@
       <h3>Teams</h3>
       <div class="well">
         <% if !current_user.teams.empty? %>
-          <% current_user.teams.each do |team| %>
-            <h2><%= link_to team.name, team_path(team) %></h2>
-          <% end %>
+          <%= render current_user.teams %>
         <% end %>
         <% if !current_user.user_team_requests.empty? %>
           <% current_user.user_team_requests.each do |request| %>
@@ -56,20 +54,17 @@
         <% end %>
       </div>
     </div>
-    
+
     <div class="col-md-4">
       <h3>Friends</h3>
       <div class="well">
         <% if !current_user.friendships.empty? %>
           <% current_user.friendships.each do |friendship| %>
-            <%= friendship.friend.name %>
+            <div class="well">
+              <%= friendship.friend.name %>
+            </div>
           <% end %>
         <% end %>
-        <h4>Pending Friend Requests</h4>
-            <% current_user.friendship_requests_to_confirm.each do |request| %>
-              <p><%= request.friend.name  %></p>
-              <%= button_to "Accept", {:controller => "friendship_requests", :action => "update", :id => request.id}, method: :patch, :class => "btn btn-primary"  %>
-            <% end %>
       </div>
     </div>
 

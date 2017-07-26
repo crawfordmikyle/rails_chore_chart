@@ -1,8 +1,8 @@
 <div class="well">
   <%= user.name %>
-  
+
   <% if @team %>
-    <% if !user.has_user_team_reqiest?(@team) %>
+    <% if !user.teams.include?(@team) %>
       <%= button_to "Invite To Team", { controller: "user_team_requests", action: "create", :request => {:user_id => user.id, :team_id => @team.id} }, method: :post, :class => "btn btn-primary"  %>
     <% end %>
   <% end %>
