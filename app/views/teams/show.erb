@@ -57,28 +57,9 @@
       <h3>Chores</h3>
 
       <div class="well">
-      <% @team.chores.each do |chore| %>
-        <div class="well">
-          <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
 
-          <% if !chore.accepted && !chore.completed && current_user.teams.include?(@team)%>
-            <%= button_to "Accept Chore", { :controller => "tasks", :action => "create", :task_args => {:chore_id => chore.id, :user_id => current_user.id}}, method: :post, :class => "btn btn-primary"  %>
-          <% end %>
+      <%= render @team.chores %>
 
-          <% if current_user.accepted_chore(chore) %>
-            <%= button_to "Done", {:controller => "tasks", :action => "update", :id => chore.task_id}, method: :patch, :class => "btn btn-primary"  %>
-          <% end %>
-
-          <% if chore.completed %>
-            <span class="label label-success">COMPLETED</span>
-          <% end %>
-
-          <% if chore.accepted %>
-            <span class="label label-primary">ACCEPTED</span>
-          <% end %>
-
-        </div>
-      <% end %>
       <% if current_user.teams.include?(@team) %>
         <%= link_to "New Chore", new_team_chore_path(@team) %>
       <% end %>
