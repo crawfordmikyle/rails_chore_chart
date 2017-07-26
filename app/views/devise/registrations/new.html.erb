@@ -2,7 +2,15 @@
 	<div class="row login_box">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name),:html => { :class => "form" }) do |f| %>
 			<h2>Sign up</h2>
-				<%= devise_error_messages! %>
+
+				<% if @user.errors.messages %>
+				  <% @user.errors.messages.each do |message| %>
+						<div class="alert alert-danger">
+							<%= "#{message[0].to_s}#{message[1].to_s}" %>
+						</div>
+					<% end %>
+				<% end %>
+
         <div class="form_group">
           <%= f.label :email, :class => 'col-sm-2 control-label' %><br />
           <%= f.email_field :email, autofocus: true, class: 'form-control' %>
