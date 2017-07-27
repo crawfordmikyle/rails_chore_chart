@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'user/:id' => 'users#show', as: :user
   get 'users' => 'users#index', as: :users
   resources :teams, :only => [:index, :new, :edit, :show, :create, :destroy]
-  resources :friendships, :only => [:destroy]
   resources :tasks, :only => [:new, :edit, :show, :create, :update, :destroy]
   resources :friendship_requests, :only => [:create, :update, :destroy]
   resources :user_team_requests, :only => [:create, :update, :destroy]
@@ -16,5 +15,5 @@ Rails.application.routes.draw do
   get 'teams/:team_id/chore/:chore_id' => 'chore#show', as: :team_chore
 
   post 'user_teams/:id' => 'user_teams#destroy', as: :destroy_user_team
-
+  post 'friendships/:id' => 'friendships#destroy', as: :destroy_friendship # <-- lol cold routes 
 end

@@ -2,13 +2,13 @@ class UserTeamsController < ApplicationController
   before_action :authenticate_user!
 
   def destroy
-    if user_team = UserTeam.find_by_id(params[:id])
+    if user_team = UserTeam.find_by(:user_id => current_user, :team_id => params[:id])
       user_team.delete
       redirect_to user_path(current_user)
     else
       flash[:alert] = "Can't Find Request"
       redirect_to user_path(current_user)
-    end 
+    end
   end
 
 private
