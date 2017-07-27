@@ -9,7 +9,9 @@
 
   <% if !current_user.friends.include?(user) && user != current_user%>
     <%= button_to "Friend Request", { controller: "friendship_requests", action: "create", id: user.id }, method: :post, :class => "btn-sm btn-primary" %>
-  <% else %>
+  <% end %>
+
+  <% if current_user.friends.include?(user) && user != current_user %>
     <%= link_to "Unfriend", destroy_friendship_path(user), method: :post %>
   <% end %>
 </div>
