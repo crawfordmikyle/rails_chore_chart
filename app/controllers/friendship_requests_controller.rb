@@ -3,8 +3,8 @@ class FriendshipRequestsController < ApplicationController
 
   def create
     friendship_request = current_user.friendship_requests.build(:friend_id => params[:id])
-    binding.pry
-    if friendship_request.valid? && !current_user.has_friendship_reqiest?(friendship_request)
+    friend = User.find_by_id(params[:id])
+    if friendship_request.valid? && !current_user.has_friendship_reqiest?(friend)
       inverse_friendship_request = friendship_request.create_inverse
       friendship_request.save
       inverse_friendship_request.save
