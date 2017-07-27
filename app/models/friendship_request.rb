@@ -15,4 +15,12 @@ class FriendshipRequest < ApplicationRecord
     end
   end
 
+  def find_inverse
+    FriendshipRequest.find_by(:user_id => friend_id, :friend_id => user_id)
+  end
+
+  def create_inverse
+    FriendshipRequest.create(:user_id => friend_id, :friend_id => user_id)
+  end
+  
 end

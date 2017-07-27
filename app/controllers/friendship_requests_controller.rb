@@ -20,13 +20,19 @@ class FriendshipRequestsController < ApplicationController
 
   #used to accept the request
   def update
-    friendship_request = FriendshipRequest.find_by_id(params[:id])
-    friendship_request.status = "Accepted"
-    friendship_request.save
+    if friendship_request = FriendshipRequest.find_by_id(params[:id])
+      inverse_friendship_request = friendship_request.find_inverse
 
-    friendship_request.create_friendship
-    flash[:success] = "Friend Added"
-    redirect_to user_path(current_user)
+      friendship_request.create_friendship
+      flash[:success] = "Friend Added"
+
+      friendship_request.delete
+      inverse_friendship.delete
+      redirect_to user_path(current_user)
+    else
+      flash[:alert] = "I can't find that!"
+      redirect_to user_path(current_user)
+    end 
   end
 
 end
