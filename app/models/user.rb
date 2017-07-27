@@ -49,6 +49,7 @@ class User < ApplicationRecord
   end
 
   def has_friendship_reqiest?(friend)
+    binding.pry
     if friendship_requests.find_by(:friend_id => friend.id)
       true
     else
@@ -71,5 +72,5 @@ class User < ApplicationRecord
       false
     end
   end
-  
+
 end
