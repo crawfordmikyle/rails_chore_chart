@@ -42,6 +42,7 @@
         <%= link_to "Create New Team", new_team_path%>
         <%= link_to "List Teams", teams_path %>
       </div>
+        <%= link_to "Edit Account", edit_user_registration_path %>
     </div>
 
     <div class="col-md-4">
@@ -65,8 +66,14 @@
             </div>
           <% end %>
         <% end %>
+
+        <h4>Pending Friend Requests</h4>
+        <% current_user.friendship_requests_to_confirm.each do |request| %>
+          <div class="well">
+            <p><%= request.friend.name  %></p>
+            <%= button_to "Accept", {:controller => "friendship_requests", :action => "update", :id => request.id}, method: :patch, :class => "btn btn-primary"  %>
+          </div>
+        <% end %>
       </div>
     </div>
-
-    <%= link_to "Edit Account", edit_user_registration_path %>
 </div>
