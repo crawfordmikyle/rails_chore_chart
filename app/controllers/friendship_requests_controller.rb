@@ -6,6 +6,7 @@ class FriendshipRequestsController < ApplicationController
     friend = User.find_by_id(params[:id])
     if friendship_request.valid? && !current_user.has_friendship_reqiest?(friend)
       inverse_friendship_request = friendship_request.create_inverse
+      friendship_request.status = "Accepted"
       friendship_request.save
       inverse_friendship_request.save
       flash[:success] = "Request Sent"
