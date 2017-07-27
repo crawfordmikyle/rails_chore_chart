@@ -20,12 +20,12 @@ class UserTeamRequestsController < ApplicationController
   #used to accept the request
   def update
     user_team_request = UserTeamRequest.find_by_id(params[:id])
-    user_team_request.status = "Accepted"
-    user_team_request.save
+
+    user_team_request.delete
 
     user_team_request.create_user_team
     flash[:success] = "Team Request Accepted!"
-    
+
     redirect_to user_path(current_user)
   end
 

@@ -9,7 +9,6 @@ class UserTeamRequest < ApplicationRecord
     if user_team = user.user_teams.build({:user_id => user_id, :team_id => team_id})
       user_team.save
     end
-
   end
 
 end
