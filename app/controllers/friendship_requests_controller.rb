@@ -27,12 +27,12 @@ class FriendshipRequestsController < ApplicationController
       flash[:success] = "Friend Added"
 
       friendship_request.delete
-      inverse_friendship.delete
+      inverse_friendship_request.delete
       redirect_to user_path(current_user)
     else
       flash[:alert] = "I can't find that!"
       redirect_to user_path(current_user)
-    end 
+    end
   end
 
 end
