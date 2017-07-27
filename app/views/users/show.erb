@@ -60,11 +60,7 @@
       <h3>Friends</h3>
       <div class="well">
         <% if !current_user.friendships.empty? %>
-          <% current_user.friendships.each do |friendship| %>
-            <div class="well">
-              <%= friendship.friend.name %>
-            </div>
-          <% end %>
+          <%= render current_user.friends %>
         <% end %>
 
         <h4>Pending Friend Requests</h4>
