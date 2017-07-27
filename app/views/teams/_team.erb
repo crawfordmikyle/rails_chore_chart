@@ -1,4 +1,5 @@
 <!-- Short Team info for friends and team member box-->
 <div class="well">
   <h4><%= link_to team.name, team_path(team) %></h4>
+  <%= link_to "Leave Team", :controller => "user_teams", :action => "destroy", method: :delete%>
 </div>
