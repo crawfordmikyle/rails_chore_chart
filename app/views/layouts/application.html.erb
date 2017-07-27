@@ -35,13 +35,13 @@
             </li>
           <% else %>
           <li>
-            <%= link_to new_user_registration_path do %>
-              <span class="glyphicon glyphicon-user"></span> Sign Up
+            <%= link_to new_user_session_path do %>
+              <span class="glyphicon glyphicon-log-out"></span> Sign In
             <% end %>
           </li>
           <li>
-            <%= link_to new_user_session_path do %>
-              <span class="glyphicon glyphicon-log-out"></span> Sign In
+            <%= link_to new_user_registration_path do %>
+              <span class="glyphicon glyphicon-user"></span> Sign Up
             <% end %>
           </li>
           <% end %>
