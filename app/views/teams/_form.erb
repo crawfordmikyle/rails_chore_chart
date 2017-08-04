@@ -19,12 +19,17 @@
   <% end %>
 </div>
 
-  <div class="control-group">
-    <%= f.label :name, "Team Name" %>
-    <%= f.text_field :name %>
-  </div>
-  <br>
-  <div class="form-actions">
-    <%= f.submit :class => 'btn btn-primary' %>
-  </div>
+<div class="control-group">
+  <%= f.label :name, "Team Name" %>
+  <%= f.text_field :name %>
+</div>
+
+
+<%= collection_check_boxes(:user, :user_ids, User.all, :id, :name) %>
+
+
+<div class="form-actions">
+  <%= f.submit :class => 'btn btn-primary' %>
+</div>
+
 <% end %>

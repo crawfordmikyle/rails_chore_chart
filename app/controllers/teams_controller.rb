@@ -14,6 +14,7 @@ class TeamsController < ApplicationController
     if team = current_user.teams.build(team_params).save
       team = Team.last
       team.link_to_current_user(current_user)
+      team.invite_users(params[:user][:user_ids])
       flash[:success] = "Successfully Created Team"
       redirect_to team_path(team)
     else
