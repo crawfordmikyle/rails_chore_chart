@@ -4,6 +4,7 @@ class Task < ApplicationRecord
 
   def add_points_to_user
   	self.user.points += self.chore.value
+  	self.user.save
   end 
-  
+
 end

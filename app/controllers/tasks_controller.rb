@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find_by_id(params[:id])
     if @task.user_id == current_user.id
-      current_user.points += @task.chore.value
+      @task.add_points_to_user
       @task.chore.mark_completed
       @task.delete
       flash[:notice] = "Chore Marked Completed"
