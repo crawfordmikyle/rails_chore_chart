@@ -72,4 +72,6 @@ class User < ApplicationRecord
     end
   end
 
+  #def self.all_except_current 
+  #end
 end

@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :name, default: "" 
       # add role attr
       t.string :role
-
+      
       t.timestamps null: false
     end
 

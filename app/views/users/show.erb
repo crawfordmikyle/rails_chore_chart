@@ -53,6 +53,7 @@
           <%= button_to "Done", {:controller => "tasks", :action => "update", :id => task.id}, method: :patch, :class => "btn btn-primary"  %>
           <br>
         <% end %>
+        <p>Point Total:<%= current_user.points %></p>
       </div>
     </div>
 
