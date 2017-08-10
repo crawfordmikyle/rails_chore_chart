@@ -2,7 +2,7 @@ class Chore < ApplicationRecord
   belongs_to :team
 
   validates :name, presence: true
-
+  validates :value, presence: true
   def mark_completed
     self.completed = true
     self.save
