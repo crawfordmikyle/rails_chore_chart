@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+  	# Adding API
     @users = User.all
   end
 

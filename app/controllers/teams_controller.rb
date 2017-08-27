@@ -2,7 +2,13 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    # adding API
     @teams = Team.all
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @teams }
+    end 
   end
 
   def new
