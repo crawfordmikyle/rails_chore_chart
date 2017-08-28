@@ -40,6 +40,8 @@ gem 'bootstrap-sass'
 # gem 'capistrano-rails', group: :development
 # Active Model Serializers
 gem 'active_model_serializers' 
+gem 'jquery-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

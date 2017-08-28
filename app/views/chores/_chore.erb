@@ -1,4 +1,4 @@
-<div class="well">
+<div class="well" id=<%=chore.id%>>
   <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
 
   <% if !chore.accepted && !chore.completed && current_user.teams.include?(@team)%>
@@ -16,5 +16,4 @@
   <% if chore.accepted %>
     <span class="label label-primary">ACCEPTED</span>
   <% end %>
-
 </div>
