@@ -4,15 +4,15 @@ $(function() {
 });
 
 function loadEventListeners(){
-	$(".accept-chore-btn").on("click",function(e){
+	$(".new_task").on("click",function(e){
 		e.preventDefault()
+		let postData = $(this).serialize();
 		debugger
-		console.log(this)
 	})
 
-	$(".complete-chore-btn").on("click",function(e){
+	$(".update_task").on("click",function(e){
 		e.preventDefault()
+		let postData = $(this).serialize();
 		debugger
-		console.log(this)
 	})
 }
