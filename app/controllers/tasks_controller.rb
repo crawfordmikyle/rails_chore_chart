@@ -3,8 +3,10 @@ class TasksController < ApplicationController
 
   def create
     params[:task][:user_id] = current_user.id
-    Task.create(task_params)
-    redirect_to team_path(current_user.teams.first.id)
+    task = Task.create(task_params)
+    respond_to do |format|
+      format.json { render json: task }
+    end 
   end
 
   #used to mark chore completed
