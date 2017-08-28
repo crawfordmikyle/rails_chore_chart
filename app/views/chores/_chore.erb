@@ -2,11 +2,11 @@
   <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
 
   <% if !chore.accepted && !chore.completed && current_user.teams.include?(@team)%>
-    <%= button_to "Accept Chore", { :controller => "tasks", :action => "create", :task_args => {:chore_id => chore.id, :user_id => current_user.id}}, method: :post, :class => "btn btn-primary"  %>
+    <%= button_to "Accept Chore", { :controller => "tasks", :action => "create", :task_args => {:chore_id => chore.id, :user_id => current_user.id}}, method: :post, :class => "btn btn-primary", :id => "accept-chore-#{chore.id}"  %>
   <% end %>
 
   <% if current_user.accepted_chore(chore) %>
-    <%= button_to "Done", {:controller => "tasks", :action => "update", :id => chore.task_id}, method: :patch, :class => "btn btn-primary"  %>
+    <%= button_to "Done", {:controller => "tasks", :action => "update", :id => chore.task_id}, method: :patch, :class => "btn btn-primary", :id => "complete-chore-#{chore.id}" %>
   <% end %>
 
   <% if chore.completed %>
