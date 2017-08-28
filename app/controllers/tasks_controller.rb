@@ -17,10 +17,9 @@ class TasksController < ApplicationController
       @task.chore.mark_completed
       @task.delete
       flash[:notice] = "Chore Marked Completed"
-      redirect_to user_path(current_user)
-    else
-      flash[:notice] = "You can't complete a chore you haven't accepted"
-      redirect_to user_path(current_user)
+      respond_to do |format|
+        format.json {render json: @task}
+      end 
     end
   end
 
