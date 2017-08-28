@@ -16,7 +16,6 @@ class TasksController < ApplicationController
       @task.add_points_to_user
       @task.chore.mark_completed
       @task.delete
-      flash[:notice] = "Chore Marked Completed"
       respond_to do |format|
         format.json {render json: @task}
       end 
