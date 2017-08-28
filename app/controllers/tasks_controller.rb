@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    params[:task][:user_id] = current_user.id
     Task.create(task_params)
     redirect_to team_path(current_user.teams.first.id)
   end
@@ -24,7 +25,7 @@ class TasksController < ApplicationController
 private
 
   def task_params
-    params.require(:task_args).permit(:chore_id, :user_id)
+    params.require(:task).permit(:chore_id, :user_id)
   end
 
 end

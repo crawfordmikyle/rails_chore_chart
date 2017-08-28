@@ -2,13 +2,19 @@
   <%= link_to chore.name, chore_path(chore) %> Points:<%= chore.value %>
 
   <% if !chore.accepted && !chore.completed && current_user.teams.include?(@team)%>
-    <!-- to be replaced with form for with class of accept-form -->
-
+    <!-- to be replaced with form for with class of new_task -->
+    <%= form_for chore.tasks.new do |f|  %>
+      <%= f.hidden_field :chore_id, :value => chore.id.to_i %>
+      <%= f.submit %>
+    <% end %>
   <% end %>
 
   <% if current_user.accepted_chore(chore) %>
-    <!-- to be replaced with form for with class of complete-form -->
-
+    <!-- to be replaced with form for with class of edit_task -->
+    <%= form_for chore.tasks.first do |f|  %>
+      <%= f.hidden_field :chore_id, :value => chore.id.to_i %>
+      <%= f.submit "Done" %>
+    <% end %>
   <% end %>
 
   <% if chore.completed %>
