@@ -2,8 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-  	# Adding API
     @users = User.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @users }
+    end 
   end
 
   def show
