@@ -30,8 +30,13 @@ class TeamsController < ApplicationController
   end
 
   def show
+    # adding API
     if @team = Team.find_by_id(params[:id])
       @users = User.all
+      respond_to do |format|
+        format.html {render :show}
+        format.json {render json: @team}
+      end 
     else
       flash[:alert] = "I can't find that team!"
       redirect_to teams_path
