@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    binding.pry
     Task.create(task_params)
     redirect_to team_path(current_user.teams.first.id)
   end
