@@ -3,13 +3,12 @@
 
   <% if !chore.accepted && !chore.completed && current_user.teams.include?(@team)%>
     <!-- to be replaced with form for with class of accept-form -->
-    <%= form_for Task.new do |f|%>
-      <%= f.submit "Accept Chore" %>
-    <% end %>
+
   <% end %>
 
   <% if current_user.accepted_chore(chore) %>
     <!-- to be replaced with form for with class of complete-form -->
+
   <% end %>
 
   <% if chore.completed %>
