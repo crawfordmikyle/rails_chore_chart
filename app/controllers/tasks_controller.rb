@@ -3,12 +3,11 @@ class TasksController < ApplicationController
 
   def create
     params[:task][:user_id] = current_user.id
-    binding.pry
-    team = Team.find_by_id(params[:task][:team_id])
     task = Task.create(task_params)
+    team = task.team.chore
     respond_to do |format|
-      format.json { render json: task }
-    end 
+      binding.pry
+    end
   end
 
   #used to mark chore completed
@@ -27,7 +26,7 @@ class TasksController < ApplicationController
 private
 
   def task_params
-    params.require(:task).permit(:chore_id, :user_id, :team_id)
+    params.require(:task).permit(:chore_id, :user_id)
   end
 
 end
