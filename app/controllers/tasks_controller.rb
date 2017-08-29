@@ -4,22 +4,23 @@ class TasksController < ApplicationController
   def create
     params[:task][:user_id] = current_user.id
     task = Task.create(task_params)
-    team = task.team.chore
+    team = task.chore.team
     respond_to do |format|
-      binding.pry
+      format.html {redirect_to(team_path(team))}
     end
   end
 
   #used to mark chore completed
   def update
     task = Task.find_by_id(params[:id])
-
+    team = task.chore.team
     if task.user_id == current_user.id
       task.add_points_to_user
       task.chore.mark_completed
+      task.delete
     end
     respond_to do |format|
-      format.json { render json: task}
+      format.html {redirect_to(team_path(team))}
     end
   end
 
