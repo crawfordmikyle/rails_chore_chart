@@ -5,7 +5,7 @@ $(function() {
 		$.post('/tasks', postData, function(responce){
 			let choreID = responce.data.attributes["chore-id"].toString();
 			$("#"+choreID).append("<span class='label label-primary'>ACCEPTED</span>")
-		})
+		})	
 	})
 
 	$(".edit_task").on("click",function(e){
@@ -14,8 +14,11 @@ $(function() {
 		let postData = $(this).serialize();
 		$.post('/tasks/'+choreID, postData, function(responce){
 			$("#"+choreID).append("<span class='label label-success'>COMPLETED</span>")
+			debugger
 		})
 	})
-});
+})
+
+
 
 

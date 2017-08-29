@@ -11,15 +11,18 @@ class TasksController < ApplicationController
 
   #used to mark chore completed
   def update
-    @task = Task.find_by_id(params[:id])
-    if @task.user_id == current_user.id
-      @task.add_points_to_user
-      @task.chore.mark_completed
-      @task.delete
+    task = Task.find_by_id(params[:id])
+
+    if task.user_id == current_user.id
+      task.add_points_to_user
+      task.chore.mark_completed
+      
       respond_to do |format|
-        format.json {render json: @task}
-      end 
+        format.json {render json: task}
+      end
+      task.delete
     end
+
   end
 
 private
