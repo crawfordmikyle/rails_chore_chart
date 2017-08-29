@@ -14,7 +14,6 @@ $(function() {
 		let postData = $(this).serialize();
 		$.post('/tasks/'+choreID, postData, function(responce){
 			$("#"+choreID).append("<span class='label label-success'>COMPLETED</span>")
-			debugger
 		})
 	})
 })
