@@ -3,6 +3,8 @@ class TasksController < ApplicationController
 
   def create
     params[:task][:user_id] = current_user.id
+    binding.pry
+    team = Team.find_by_id(params[:task][:team_id])
     task = Task.create(task_params)
     respond_to do |format|
       format.json { render json: task }
@@ -16,19 +18,16 @@ class TasksController < ApplicationController
     if task.user_id == current_user.id
       task.add_points_to_user
       task.chore.mark_completed
-      
-      respond_to do |format|
-        format.json {render json: task}
-      end
-      task.delete
     end
-
+    respond_to do |format|
+      format.json { render json: task}
+    end
   end
 
 private
 
   def task_params
-    params.require(:task).permit(:chore_id, :user_id)
+    params.require(:task).permit(:chore_id, :user_id, :team_id)
   end
 
 end
