@@ -13,7 +13,6 @@ class TasksController < ApplicationController
   #used to mark chore completed
   def update
     task = Task.find_by(chore_id: params[:id])
-    team = task.chore.team
     if task.user_id == current_user.id
       task.add_points_to_user
       task.chore.mark_completed
