@@ -1,23 +1,19 @@
 $(function() {
 	$(".new_task").on("submit",function(e){
 		e.preventDefault();
-		debugger
+		let choreID = this.parentNode.id
 		let postData = $(this).serialize();
 		$.post('/tasks', postData, function(responce){
-			debugger
-			let choreID = responce.data.attributes["chore-id"].toString();
-			$("#"+choreID).append("<span class='label label-primary'>ACCEPTED</span>")
+			$("#"+choreID).replaceWith(responce)
 		})	
 	})
 
 	$(".edit_task").on("submit",function(e){
 		e.preventDefault();
-		debugger
 		let choreID = this.parentNode.id
 		let postData = $(this).serialize();
 		$.post('/tasks/'+choreID, postData, function(responce){
-			debugger
-			$("#"+choreID).append("<span class='label label-success'>COMPLETED</span>")
+			$("#"+choreID).replaceWith(responce)
 		})
 	})
 

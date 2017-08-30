@@ -5,7 +5,9 @@ class TasksController < ApplicationController
     params[:task][:user_id] = current_user.id
     task = Task.create(task_params)
     team = task.chore.team
-    render 'chores/show', :layout => false
+    @chore = Chore.find_by_id(task.chore_id)
+
+    render @chore, :layout => false
   end
 
   #used to mark chore completed
@@ -15,11 +17,10 @@ class TasksController < ApplicationController
     if task.user_id == current_user.id
       task.add_points_to_user
       task.chore.mark_completed
+      @chore = task.chore
       task.delete
-    end
-    respond_to do |format|
-      format.html {redirect_to(team_path(team))}
-      format.json {render json: team}
+
+      render @chore, :layout => false 
     end
   end
 
