@@ -1,13 +1,15 @@
 $(function() {
+	$("input").removeAttr('data-disable-with');
 	$(".new_task").on("submit",function(e){
 		e.preventDefault();
 		let choreID = this.parentNode.id
 		let postData = $(this).serialize();
 		$.post('/tasks', postData, function(responce){
 			$("#"+choreID).replaceWith(responce)
-			debugger
-			$("#submit-complete_"+choreID).removeAttr('data-disable-with');
+			$("input").removeAttr('data-disable-with');
 		})	
+		debugger
+		$("#submit-accept-"+choreID).removeAttr('data-disable-with');
 	})
 
 	$(".edit_task").on("submit",function(e){
@@ -25,9 +27,9 @@ $(function() {
 		let postData = $(this).serialize();
 		$.post("/teams/"+teamID+"/chores/new",postData,function(responce){
 			$("#chores-div").append(responce)
+			$("input").removeAttr('data-disable-with');
 		})
 		this.reset();
-		debugger
 		$("#submit-new-chore").prop('disabled', false);
 	})
 })

@@ -5,7 +5,7 @@
     <!-- to be replaced with form for with class of new_task -->
     <%= form_for chore.tasks.new do |f|  %>
       <%= f.hidden_field :chore_id, :value => chore.id.to_i %>
-      <%= f.submit "Accept Chore", :id => "submit-accept_#{chore.id.to_i}" %>
+      <%= f.submit "Accept Chore", :id => "submit-accept-#{chore.id.to_i}" %>
     <% end %>
   <% end %>
 
@@ -13,7 +13,7 @@
     <!-- to be replaced with form for with class of edit_task -->
     <%= form_for chore.tasks.first do |f|  %>
       <%= f.hidden_field :chore_id, :value => chore.id.to_i %>
-      <%= f.submit "Done", :id => "submit-complete_#{chore.id.to_i}" %>
+      <%= f.submit "Done", :id => "submit-complete-#{chore.id.to_i}" %>
     <% end %>
   <% end %>
 
