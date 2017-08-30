@@ -19,7 +19,6 @@ class TasksController < ApplicationController
       task.chore.mark_completed
       @chore = task.chore
       task.delete
-
       render @chore, :layout => false 
     end
   end

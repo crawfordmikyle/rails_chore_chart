@@ -5,6 +5,7 @@ $(function() {
 		let postData = $(this).serialize();
 		$.post('/tasks', postData, function(responce){
 			$("#"+choreID).replaceWith(responce)
+			$("#submit-accept").removeAttr('data-disable-with');
 		})	
 	})
 
@@ -14,6 +15,7 @@ $(function() {
 		let postData = $(this).serialize();
 		$.post('/tasks/'+choreID, postData, function(responce){
 			$("#"+choreID).replaceWith(responce)
+			$("#submit-complete").removeAttr('data-disable-with');
 		})
 	})
 
@@ -23,7 +25,6 @@ $(function() {
 		let postData = $(this).serialize();
 		$.post("/teams/"+teamID+"/chores/new",postData,function(responce){
 			$("#chores-div").append(responce)
-			
 		})
 	})
 })
