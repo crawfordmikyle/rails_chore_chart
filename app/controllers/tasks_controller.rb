@@ -7,6 +7,7 @@ class TasksController < ApplicationController
     team = task.chore.team
     respond_to do |format|
       format.html {redirect_to(team_path(team))}
+      format.json {render json: team}
     end
   end
 
@@ -21,6 +22,7 @@ class TasksController < ApplicationController
     end
     respond_to do |format|
       format.html {redirect_to(team_path(team))}
+      format.json {render json: team}
     end
   end
 

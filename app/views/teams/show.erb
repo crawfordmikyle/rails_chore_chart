@@ -37,17 +37,35 @@
         <h3>Invite New Members</h3>
         <%= render @users %>
       <% end %>
-
     </div>
 
     <div class="col-md-4">
       <h3>Chores</h3>
+      
       <div class="well">
-        <%= render @team.chores %>
-        <% if current_user.teams.include?(@team) %>
-          <%= link_to "New Chore", new_team_chore_path(@team) %>
+      <%= render @team.chores %>
+      <% binding.pry %>
+      <% if current_user.teams.include?(@team) %>
+        <%= form_for Chore.new  do |f| %>
+          <%= f.hidden_field :team_id, :value => params[:team_id] %>
+          <div class="control-group">
+            <%= f.label :name, "Chore Name" %>
+            <%= f.text_field :name %>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :value, "Chore Value" %>
+            <%= f.text_field :value%>
+          </div>
+
+          <div class="form-actions">
+            <%= f.submit :class => 'btn btn-primary' %>
+          </div>
+          <% end %>
         <% end %>
+
       </div>
+
     </div>
 
   </div>
