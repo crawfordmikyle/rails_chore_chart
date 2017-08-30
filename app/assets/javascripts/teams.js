@@ -27,6 +27,7 @@ $(function() {
 		let postData = $(this).serialize();
 		$.post("/teams/"+teamID+"/chores/new",postData,function(responce){
 			$("#chores-div").append(responce)
+			
 		})
 	})
 })

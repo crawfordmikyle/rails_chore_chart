@@ -5,10 +5,7 @@ class TasksController < ApplicationController
     params[:task][:user_id] = current_user.id
     task = Task.create(task_params)
     team = task.chore.team
-    respond_to do |format|
-      format.html {redirect_to(team_path(team))}
-      format.json {render json: team}
-    end
+    render 'chores/show', :layout => false
   end
 
   #used to mark chore completed

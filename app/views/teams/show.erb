@@ -43,28 +43,29 @@
       <h3>Chores</h3>
       
       <div class="well" id="chores-div">
-      <%= render @team.chores %>
+        <%= render @team.chores %>
+      </div>
 
-      <% if current_user.teams.include?(@team) %>
-        <h4>New Chore</h4>
-        <%= form_for Chore.new  do |f| %>
-          <%= f.hidden_field :team_id, :value => @team.id %>
-          <div class="control-group">
-            <%= f.label :name, "Chore Name" %>
-            <%= f.text_field :name %>
-          </div>
+      <div class="well" id="new-chore-form">
+        <% if current_user.teams.include?(@team) %>
+          <h4>New Chore</h4>
+          <%= form_for Chore.new  do |f| %>
+            <%= f.hidden_field :team_id, :value => @team.id %>
+            <div class="control-group">
+              <%= f.label :name, "Chore Name" %>
+              <%= f.text_field :name %>
+            </div>
 
-          <div class="control-group">
-            <%= f.label :value, "Chore Value" %>
-            <%= f.text_field :value%>
-          </div>
+            <div class="control-group">
+              <%= f.label :value, "Chore Value" %>
+              <%= f.text_field :value%>
+            </div>
 
-          <div class="form-actions">
-            <%= f.submit :class => 'btn btn-primary' %>
-          </div>
+            <div class="form-actions">
+              <%= f.submit :class => 'btn btn-primary' %>
+            </div>
           <% end %>
-        <% end %>
-
+        <% end %>        
       </div>
 
     </div>
