@@ -42,7 +42,7 @@
     <div class="col-md-4">
       <h3>Chores</h3>
       
-      <div class="well">
+      <div class="well" id="chores-div">
       <%= render @team.chores %>
 
       <% if current_user.teams.include?(@team) %>

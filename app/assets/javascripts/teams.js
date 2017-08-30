@@ -26,6 +26,7 @@ $(function() {
 		let teamID = this.children.chore_team_id.value
 		let postData = $(this).serialize();
 		$.post("/teams/"+teamID+"/chores/new",postData,function(responce){
+			$("#chores-div").append(responce)
 		})
 	})
 })

@@ -16,7 +16,7 @@ class ChoresController < ApplicationController
         @chore = @team.chores.build(chore_params)
         @chore.save
         flash[:success] = "Chore Created"
-        redirect_to team_path(@team)
+        render 'chores/show', :layout => false
       else
         flash[:alert] = "You can only create chores for your team"
         redirect_to team_path(@team)
