@@ -14,4 +14,11 @@
   <% if current_user.friends.include?(user) && user != current_user %>
     <%= link_to "Unfriend", destroy_friendship_path(user), method: :post %>
   <% end %>
+
+  teams:
+
+  <% user.teams.each do |team| %>
+    <%= team.name %>
+  <% end %>
+
 </div>

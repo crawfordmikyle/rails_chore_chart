@@ -1,9 +1,5 @@
 <h1>Users</h1>
 
-<div class="well">
-  <% @users.each do |user| %>
-      <% if user != current_user %>
-          <%= render partial: "user", locals: {:user => user} %>
-      <% end %>
-  <% end %>
+<div class="well" id="user-div">
+	
 </div>
