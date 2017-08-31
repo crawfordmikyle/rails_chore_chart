@@ -5,10 +5,10 @@
 </div>
 
 <script id="user-template" type="text/x-handlebars-template">
-	<div class="well" id={{this.id}}>
-		<h4>{{this.name}}</h4>
+	<div class="well">
+		<h4>{{matchArray[ii].name}}</h4>
 		<a href='/user/'+{{id}}>See Profile</a>
-		<p>{{this.points}}</p>
-		<p>{{this.teamNames}}</p>
+		<p>{{matchArray[ii].points}}</p>
+		<p>{{matchArray.teamNames}}</p>
 	</div>
 </script>
