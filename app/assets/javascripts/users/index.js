@@ -1,12 +1,18 @@
-function User(id,name,teams,points){
+function User(id,name,teams,points,email){
 	this.id = id
 	this.name = name
 	this.teams = teams
 	this.points = points
+	this.email = email
+
+	this.keyWordString = function(){
+		return name+","+email
+	}
+
 }
 
-function liveSearch(){
-	let = input = $()
+function liveSearch(users){
+	debugger
 }
 
 var users = []
@@ -20,6 +26,7 @@ $(function() {
         	for(var i = userData.length - 1; i >= 0; i--) {
         		let userID = userData[i].id
         		let userInfo = userData[i].attributes;
+        		let userEmail = userInfo.email;
         		let userName = userInfo.name;
         		let userPoints = userInfo.points;
         		let teamNames = []
@@ -30,15 +37,11 @@ $(function() {
 	        	//	}
         		//}
 
-        		users.push(new User(userID,userName,teamNames,userPoints));
+        		users.push(new User(userID,userName,teamNames,userPoints,userEmail));
         	}
         },
         complete: function(){
-        	for (var i = users.length - 1; i >= 0; i--) {
-        		var source   = $("#user-template").html();
-						var template = Handlebars.compile(source);
-						$("#user-div").append (template(users[i]));
-        	}
+        	liveSearch(users);
         }
     })
 
