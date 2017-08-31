@@ -1,7 +1,6 @@
 $(function() {
-	$("input").removeAttr('data-disable-with');
-	
-	$(".new_task").on("submit",function(e){
+
+	$('body').on("click",".new_task",function(e){
 		e.preventDefault();
 		let choreID = this.parentNode.id
 		let postData = $(this).serialize();
@@ -10,7 +9,7 @@ $(function() {
 		})	
 	})
 
-	$(".edit_task").on("submit",function(e){
+	$('body').on("click",".edit_task",function(e){
 		e.preventDefault();
 		let choreID = this.parentNode.id
 		let postData = $(this).serialize();
@@ -30,5 +29,6 @@ $(function() {
 		$("input").removeAttr('data-disable-with');
 		$("#submit-new-chore").prop('disabled', false);
 	})
+	
 })
 
