@@ -13,6 +13,7 @@ function User(id,name,teams,points,email){
 }
 
 function liveSearch(users){
+	debugger
 	$("#live-search").keyup(function(){
 		var searchField = $('#live-search').val().toLowerCase();
 		var matchArray = []
@@ -25,8 +26,8 @@ function liveSearch(users){
 			}
 		}
 		$("#user-div").append()
-	})
-}
+	});
+};
 
 var users = []
 $(function() {
@@ -36,27 +37,25 @@ $(function() {
         url: "/users",
         success: function(responce){
         	let userData = responce.data;
+
         	for(var i = userData.length - 1; i >= 0; i--) {
         		let userID = userData[i].id
         		let userInfo = userData[i].attributes;
         		let userEmail = userInfo.email;
         		let userName = userInfo.name;
         		let userPoints = userInfo.points;
-        		let teamNames = []
-
-        		//if (userInfo.teams.length > 0){
-	        	//	for (var i = userInfo.teams.length - 1; i >= 0; i--) {
-	        	//		teamNames.push(userInfo.teams[i].name)
-	        	//	}
-        		//}
-
+        		var teamNames = []
+        		debugger
+        		for (var ii = userInfo.teams.length - 1; ii >= 0; ii--) {
+        			teamNames.push(userInfo.teams[ii].name)
+        		}
         		users.push(new User(userID,userName,teamNames,userPoints,userEmail));
         	}
         },
         complete: function(){
         	liveSearch(users);
         }
-    })
+    });
 
 
 });
