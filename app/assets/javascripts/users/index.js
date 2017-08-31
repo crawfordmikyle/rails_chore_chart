@@ -14,6 +14,11 @@ function User(id,name,teams,points,email){
 }
 
 function liveSearch(users){
+	for (var iii = users.length - 1; iii >= 0; iii--) {
+		var source   = $("#user-template").html();
+		var template = Handlebars.compile(source);
+		$("#user-div").append(template(users[iii].handlebarsData));
+	}
 	$("#live-search").keyup(function(){
 		$("#user-div").empty();
 		var searchField = $('#live-search').val().toLowerCase();
