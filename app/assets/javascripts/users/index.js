@@ -9,6 +9,8 @@ function User(id,name,teams,points,email){
 		let str = name+","+email
 		return str.toLowerCase();
 	}
+
+	this.handlebarsData = {id: id, name: name, teams: teams, points: points}
 }
 
 function liveSearch(users){
@@ -27,7 +29,7 @@ function liveSearch(users){
 		for (var ii = matchArray.length - 1; ii >= 0; ii--) {
 			var source   = $("#user-template").html();
 			var template = Handlebars.compile(source);
-			$("#user-div").append("<div>"+matchArray[ii].name+"</div>");
+			$("#user-div").append(template(matchArray[ii].handlebarsData));
 		}
 	});
 };
@@ -51,7 +53,7 @@ $(function() {
         		for (var ii = userInfo.teams.length - 1; ii >= 0; ii--) {
         			teamNames.push(userInfo.teams[ii].name)
         		}
-        		users.push(new User(userID,userName,teamNames,userPoints,userEmail));
+        		users.push(new User(userID,userName,teamNames.toString(),userPoints,userEmail));
         	}
         },
         complete: function(){
