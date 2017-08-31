@@ -6,13 +6,26 @@ function User(id,name,teams,points,email){
 	this.email = email
 
 	this.keyWordString = function(){
-		return name+","+email
+		let str = name+","+email
+		return str.toLowerCase();
 	}
 
 }
 
 function liveSearch(users){
-	debugger
+	$("#live-search").keyup(function(){
+		var searchField = $('#live-search').val().toLowerCase();
+		var matchArray = []
+		for (var i = users.length - 1; i >= 0; i--) {
+			let keyWords = users[i].keyWordString();
+			let searchLetters = searchField
+
+			if (keyWords.match(searchLetters)){
+				matchArray.push(users[i])
+			}
+		}
+		$("#user-div").append()
+	})
 }
 
 var users = []
