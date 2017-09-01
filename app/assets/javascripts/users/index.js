@@ -5,16 +5,17 @@ function User(id,name,teams,points,email){
 	this.points = points
 	this.email = email
 
-	this.keyWordString = function(){
-		let str = name+","+email
-		return str.toLowerCase();
-	}
-
 	this.handlebarsData = {id: id, name: name, teams: teams, points: points}
+}
+
+User.prototype.keyWordString = function(){
+	let str = this.name+","+this.email
+	return str.toLowerCase();
 }
 
 function liveSearch(users){
 	for (var iii = users.length - 1; iii >= 0; iii--) {
+		debugger
 		var source   = $("#user-template").html();
 		var template = Handlebars.compile(source);
 		$("#user-div").append(template(users[iii].handlebarsData));
