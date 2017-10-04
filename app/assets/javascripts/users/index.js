@@ -54,15 +54,15 @@ $(function() {
         success: function(responce){
         	let userData = responce.data;
 
-        	for(var i = userData.length - 1; i >= 0; i--) {
+        	for(let i = userData.length - 1; i >= 0; i--) {
         		let userID = userData[i].id
         		let userInfo = userData[i].attributes;
         		let userEmail = userInfo.email;
         		let userName = userInfo.name;
         		let userPoints = userInfo.points;
         		var teamNames = []
-        		for (var ii = userInfo.teams.length - 1; ii >= 0; ii--) {
-        			teamNames.push(userInfo.teams[ii].name)
+        		for (let i = userInfo.teams.length - 1; i >= 0; i--) {
+        			teamNames.push(userInfo.teams[i].name)
         		}
         		users.push(new User(userID,userName,teamNames.toString(),userPoints,userEmail));
         	}
