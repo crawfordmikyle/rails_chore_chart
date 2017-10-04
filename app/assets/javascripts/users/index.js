@@ -57,8 +57,8 @@ function liveSearch(users){
 		// }
 
     matchArray.forEach((user)=>{
-      var source   = $("#user-template").html();
-      var template = Handlebars.compile(source);
+      let source   = $("#user-template").html();
+      let template = Handlebars.compile(source);
       $("#user-div").append(template(user.handlebarsData));
     })
 
