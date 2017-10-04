@@ -50,11 +50,17 @@ function liveSearch(users){
       }
     })
 
-		for (let i = matchArray.length - 1; i >= 0; i--) {
-			var source   = $("#user-template").html();
-			var template = Handlebars.compile(source);
-			$("#user-div").append(template(matchArray[i].handlebarsData));
-		}
+		// for (let i = matchArray.length - 1; i >= 0; i--) {
+		// 	var source   = $("#user-template").html();
+		// 	var template = Handlebars.compile(source);
+		// 	$("#user-div").append(template(matchArray[i].handlebarsData));
+		// }
+
+    matchArray.forEach((user)=>{
+      var source   = $("#user-template").html();
+      var template = Handlebars.compile(source);
+      $("#user-div").append(template(user.handlebarsData));
+    })
 
 	});
 };
