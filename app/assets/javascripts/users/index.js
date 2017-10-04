@@ -14,17 +14,20 @@ User.prototype.keyWordString = function(){
 }
 
 function liveSearch(users){
-	for (var iii = users.length - 1; iii >= 0; iii--) {
-		debugger
-		var source   = $("#user-template").html();
+
+	for (let i = users.length - 1; i >= 0; i--) {
+
+		var source = $("#user-template").html();
 		var template = Handlebars.compile(source);
-		$("#user-div").append(template(users[iii].handlebarsData));
+		$("#user-div").append(template(users[i].handlebarsData));
 	}
+
 	$("#live-search").keyup(function(){
 		$("#user-div").empty();
 		var searchField = $('#live-search').val().toLowerCase();
 		var matchArray = []
-		for (var i = users.length - 1; i >= 0; i--) {
+
+		for (let i = users.length - 1; i >= 0; i--) {
 			let keyWords = users[i].keyWordString();
 			let searchLetters = searchField
 
@@ -32,11 +35,13 @@ function liveSearch(users){
 				matchArray.push(users[i])
 			}
 		}
-		for (var ii = matchArray.length - 1; ii >= 0; ii--) {
+
+		for (let i = matchArray.length - 1; i >= 0; i--) {
 			var source   = $("#user-template").html();
 			var template = Handlebars.compile(source);
-			$("#user-div").append(template(matchArray[ii].handlebarsData));
+			$("#user-div").append(template(matchArray[i].handlebarsData));
 		}
+
 	});
 };
 
