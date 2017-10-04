@@ -16,10 +16,9 @@ User.prototype.keyWordString = function(){
 function liveSearch(users){
 
 	// for (let i = users.length - 1; i >= 0; i--) {
-
-	// 	var source = $("#user-template").html();
-	// 	var template = Handlebars.compile(source);
-	// 	$("#user-div").append(template(users[i].handlebarsData));
+	//   var source = $("#user-template").html();
+	//   var template = Handlebars.compile(source);
+	//   $("#user-div").append(template(users[i].handlebarsData));
 	// }
 
   users.forEach((user)=>{
@@ -33,14 +32,23 @@ function liveSearch(users){
 		var searchField = $('#live-search').val().toLowerCase();
 		var matchArray = []
 
-		for (let i = users.length - 1; i >= 0; i--) {
-			let keyWords = users[i].keyWordString();
-			let searchLetters = searchField
+		// for (let i = users.length - 1; i >= 0; i--) {
+		//   let keyWords = users[i].keyWordString();
+		//   let searchLetters = searchField
 
-			if (keyWords.match(searchLetters)){
-				matchArray.push(users[i])
-			}
-		}
+		// if (keyWords.match(searchLetters)){
+		// 	 matchArray.push(users[i])
+		//  }
+		// }
+
+    users.forEach((user)=>{
+      let keyWords = user.keyWordString();
+      let searchLetters = searchField;
+
+      if (keyWords.match(searchLetters)){
+        matchArray.push(user)
+      }
+    })
 
 		for (let i = matchArray.length - 1; i >= 0; i--) {
 			var source   = $("#user-template").html();
