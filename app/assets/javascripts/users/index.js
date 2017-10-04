@@ -15,12 +15,18 @@ User.prototype.keyWordString = function(){
 
 function liveSearch(users){
 
-	for (let i = users.length - 1; i >= 0; i--) {
+	// for (let i = users.length - 1; i >= 0; i--) {
 
-		var source = $("#user-template").html();
-		var template = Handlebars.compile(source);
-		$("#user-div").append(template(users[i].handlebarsData));
-	}
+	// 	var source = $("#user-template").html();
+	// 	var template = Handlebars.compile(source);
+	// 	$("#user-div").append(template(users[i].handlebarsData));
+	// }
+
+  users.forEach((user)=>{
+    let source = $("#user-template").html();
+    let template = Handlebars.compile(source);
+    $("#user-div").append(template(user.handlebarsData));
+  })
 
 	$("#live-search").keyup(function(){
 		$("#user-div").empty();
