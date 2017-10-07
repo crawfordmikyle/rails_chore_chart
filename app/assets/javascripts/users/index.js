@@ -14,7 +14,6 @@ User.prototype.keyWordString = function(){
 }
 
 function liveSearch(users){
-
   users.forEach((user)=>{
     let source = $("#user-template").html();
     let template = Handlebars.compile(source);

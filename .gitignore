@@ -22,3 +22,4 @@
 
 .byebug_history
 config/initializers/devise.rb
+.DS_Store
